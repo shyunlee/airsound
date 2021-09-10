@@ -1,0 +1,41 @@
+@value defaultColor from '../../common/colors.css';
+
+.mood_list {
+  height: 100%;
+  width: 90%;
+  border: 1px solid defaultColor;
+}
+
+.mood_list_bar {
+  outline:0;
+  background-color: defaultColor;
+  border-radius: 15px;
+  width:0.25em;
+  height: 15em;
+  margin-left: 0.5em;
+}
+
+.mood_list_toggle {
+  margin-left:0.2em;
+}
+
+.toggle_btn.opened {
+  width: 1.2em;
+  transition: all 0.1s linear;
+  transform: rotate(-90deg)
+}
+
+.toggle_btn.closed {
+  width: 1.2em;
+  transition: all 0.1s linear;
+  transform: rotate(90deg)
+}
+
+.toggle_btn.opened:hover {
+  transform: rotate(-90deg) scale(1.3)
+}
+
+.toggle_btn.closed:hover {
+  transform: rotate(90deg) scale(1.3);
+}
+
