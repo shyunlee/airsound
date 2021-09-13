@@ -11,11 +11,15 @@ const Main = (props) => {
       <section className={styles.main_left}>
         <MoodList />
       </section>
-      <section className={styles.main_top}>
-        <Console />
-      </section>
-      <section className={styles.main_bottom}>
-        <ScreenList />
+      <section className={styles.main_center}>
+        <section className={styles.center}>
+          <section className={styles.center_top}>
+            <Console />
+          </section>
+          <section className={styles.center_bottom}>
+            <ScreenList />
+          </section>
+        </section>
       </section>
       <section className={styles.main_right}>
         <SoundList />

@@ -4,6 +4,8 @@
   height: 95%;
   width: 100%;
   border: 1px solid defaultColor;
+  overflow-y: scroll;
+  padding: 0.5em 0.7em;
 }
 
 .console_bar {
@@ -37,4 +39,8 @@
 
 .toggle_btn.closed:hover {
   transform: rotate(180deg) scale(1.3)
+}
+
+.selected_screen {
+  margin:1em 0.5em;
 }

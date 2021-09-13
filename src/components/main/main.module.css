@@ -1,37 +1,47 @@
 @value defaultColor from '../../common/colors.css';
 
 .main {
-  height:100%;
+  height:92vh;
   width: 100%;
   display:flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  position:relative;
 }
 
 .main_left {
-  height: 80%;
-  width: 18%;
-  position:absolute;
-  left:1em;
-  margin-top:3em;
+  height: 100%;
+  min-width:15em;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex:0 0 20%;
+  padding-top:3em;
+  padding-bottom:10em;
+  padding-left:0.5em;
+}
+
+.main_center {
+  height: 100%;
+  flex: 1 0 auto;
+}
+
+.main_right {
+  height: 100%;
+  min-width:10em;
+  overflow:hidden;
+  padding:2em 1em 2em 0;
+  flex:0 1 20%;
+}
+
+.center {
+  height: 100%;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-
-.main_right {
-  height: 95%;
-  width: 5%;
-  position: absolute;
-  right:1em;
-  margin-top: 1.5em;
-  overflow: auto;
-}
-
-.main_top {
+.center_top {
   height: 50%;
   width: 20em;
   margin-top: 2em;
@@ -40,10 +50,19 @@
   align-items: center;
 }
 
-.main_bottom {
+.center_bottom {
   height: 10%;
   width: 50em;
   margin-bottom: 1em;
-  
 }
 
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  background-color: defaultColor;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: aqua;
+}

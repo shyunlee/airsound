@@ -2,6 +2,16 @@
   height:100%;
   width: 100%;
   padding: 0.5em;
-  overflow:auto;
+  overflow-x: scroll;
   white-space: nowrap;
+}
+
+.screen_ball_container {
+  display:inline-block;
+  transition: all 0.1s linear;
+}
+
+.screen_ball_container:hover {
+  transform: scale(1.2);
+  margin:0 1em;
 }

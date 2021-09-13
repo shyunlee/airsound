@@ -1,19 +1,12 @@
 .screen_ball {
-  display:inline-block;
   padding: 0.2em;
   margin: 0 0.5em;
   background-color: whitesmoke;
   border-radius: 50%;
   width: 3.5em;
-  transition: all 0.1s linear;
 }
 
 .screen_ball_img {
   width:100%;
   padding:0.5em;
-}
-
-.screen_ball:hover {
-  transform: scale(1.2);
-  margin:0 1em;
 }
