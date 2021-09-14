@@ -23,18 +23,21 @@
   display:flex;
   flex-direction: column;
   background-color: white;
+  justify-content: flex-end;
+  padding-bottom: 5em;
 }
 
 .login_input,
 .signup_input {
   display:flex;
   flex-direction: column;
-  padding: 4em 5em ;
+  padding: 5em 5em ;
+  padding-bottom: 1em;
+  align-items: center;
 }
 
-.login_input {
-  align-items: center;
-  padding-bottom:2.5em;
+.login_input .submit_button {
+  margin-top:3em;
 }
 
 .signup_input {
@@ -44,17 +47,17 @@
 .label {
   color: darkgray;
   width:100%;
-  margin:1em 0em;
+  margin:0em 0em;
   font-size:0.8rem;
 }
 
 .input {
-  padding-top:0.2em;
+  /* padding-top:0.2em; */
   padding-left:0.5em;
   width:100%;
   border: 0;
   outline: 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color:lightBlack;
 }
 
@@ -62,17 +65,18 @@
   content: '';
   display: block;
   width: 90%;
-  height:2px;
+  height:1px;
   background-color: lightgray;
+  margin-bottom:1em;
 }
 
 .submit_button {
-  width: 10em;
+  width: 7em;
   margin-top:2em;
-  padding:0.4em 0;
+  padding:0.3em 0;
   font-weight: bold;
   border: 0;
-  border-radius: 1em;
+  border-radius: 0.2em;
   background-color:lightBlack;
   color: whitesmoke;
   letter-spacing: 0.2em;
@@ -88,16 +92,20 @@
 }
 
 .login_text{
-  padding:0.3em 0;
+  padding:0.2em 0;
   text-align: center;
+  color: lightBlack;
+  font-size: 0.8rem;
 }
 
 .login_link {
   width: 10em;
   margin-bottom:0.3em;
-  padding:0.3em 0;
+  padding:0.2em 0;
   text-align: center;
   cursor: pointer;
+  color:lightBlack;
+  font-size: 0.9rem;
 }
 
 .auth_login {
@@ -116,25 +124,24 @@
 }
 
 .text_or {
-  width: 3em;
+  width: 2em;
   z-index: 1;
   background-color: white;
+  color: lightBlack;
 }
 
 .auth_divider::after {
   content: '';
   display: block;
   width: 90%;
-  height:2px;
+  height:1px;
   background-color: lightgray;
   transform: translateY(-1.5em);
-  
 }
 
 .auth_btn_container {
   display:flex;
   justify-content: center;
-  margin-top: 1em;
 }
 
 .auth_btn {
