@@ -5,7 +5,7 @@ import SoundBall from '../ball_sound/SoundBall'
 const SoundCard = ({sound}) => {
   return (
     <div className={styles.card}>
-      <div className={styles.ball}>
+      <div className={styles.sound_ball}>
         <SoundBall sound={sound}/>
       </div>
       <div className={styles.volume}>

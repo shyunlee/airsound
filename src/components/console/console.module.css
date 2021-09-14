@@ -1,11 +1,13 @@
-@value defaultColor from '../../common/colors.css';
+@value defaultColor, containerBack from '../../common/colors.css';
 
 .console {
   height: 95%;
   width: 100%;
-  border: 1px solid defaultColor;
+  /* border: 1px solid defaultColor; */
   overflow-y: scroll;
   padding: 0.5em 0.7em;
+  background-color: containerBack;
+  border-radius: 0.5em;
 }
 
 .console_bar {
@@ -43,4 +45,9 @@
 
 .selected_screen {
   margin:1em 0.5em;
+  margin-top:0.5em;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  padding: 0.2em;
+  width: 4.5em;
 }

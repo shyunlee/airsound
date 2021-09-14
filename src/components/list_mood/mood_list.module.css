@@ -1,9 +1,12 @@
-@value defaultColor from '../../common/colors.css';
+@value defaultColor, lightBlack, containerBack from '../../common/colors.css';
 
 .mood_list {
   height: 100%;
-  width: 90%;
-  border: 1px solid defaultColor;
+  width: 100%;
+  padding: 0 1em;
+  background-color: containerBack;
+  overflow-y: scroll;
+  border-radius: 0.5em;
 }
 
 .mood_list_bar {
@@ -38,4 +41,3 @@
 .toggle_btn.closed:hover {
   transform: rotate(90deg) scale(1.3);
 }
-

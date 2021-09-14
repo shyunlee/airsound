@@ -1,13 +1,14 @@
 import { Switch, Route } from 'react-router-dom';
+import { useState } from 'react';
+
 import styles from './app.module.css';
-import LandingPage from './components/landing_page/LandingPage';
-import Header from './components/header/Header'
-import Main from './components/main/Main'
-import Login from './components/user_login/Login';
-import Signup from './components/user_signup/Signup';
-import MyPage from './components/mypage/MyPage';
+import LandingPage from './pages/landing/LandingPage';
+import Main from './pages/main/Main'
+import MyPage from './pages/mypage/MyPage';
+import UserAuth from './pages/user_auth/UserAuth';
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false)
   return (
     <div className={styles.app}>
       <Switch>
@@ -15,14 +16,10 @@ function App() {
           <LandingPage />
         </Route>
         <Route path='/player'>
-          <Header />
-          <Main />
+          <Main isLogin={isLogin}/>
         </Route>
-        <Route path='/login'>
-          <Login />
-        </Route>
-        <Route path='/signup'>
-          <Signup />
+        <Route path='/auth'>
+          <UserAuth />
         </Route>
         <Route path='/mypage'>
           <MyPage/>

@@ -1,9 +1,5 @@
 .screen_ball {
-  padding: 0.2em;
-  margin: 0 0.5em;
-  background-color: whitesmoke;
-  border-radius: 50%;
-  width: 3.5em;
+  width: 100%;
 }
 
 .screen_ball_img {

@@ -1,0 +1,83 @@
+@value defaultColor, lightBlack from '../../common/colors.css';
+
+.mood_card {
+  display:flex;
+  padding-left:0.5em;
+  border: 1px solid defaultColor;
+  margin: 1em 0;
+  border-radius: 10px;
+  background-color: lightBlack;
+}
+
+.mood_screen_container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:0 0.3em;
+}
+
+.mood_screen {
+  background-color: whitesmoke;
+  width: 4.5em;
+  border-radius: 50%;
+  padding: 0.2em;
+}
+
+.mood_info {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  /* align-items: center; */
+  padding:0.3em 0;
+}
+
+.mood_title {
+  color:whitesmoke;
+  text-align: right;
+  width: 90%;
+  padding:0.2em 0.5em;
+  margin-bottom: 0.2em;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid defaultColor;
+}
+
+.mood_sounds_container {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.mood_sounds {
+  display:flex;
+  width: 100%;
+  justify-content: flex-start;
+  padding-left:0.8em;
+  overflow-x: auto;
+}
+
+.sound_ball {
+  width: 2em;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  padding:0.2em;
+  margin:0 0.3em;
+}
+
+.mood_control {
+  width: 100%;
+  display:flex;
+  justify-content: flex-end;
+  padding:0.5em 0;
+  padding-right: 0.5em;
+}
+
+.mood_control_btn {
+  margin:0 0.3em;
+  margin-top:1em;
+  border-radius: 20%;
+  width: 2em;
+  height: 2em;
+  background-color: thistle;
+  border:0;
+}

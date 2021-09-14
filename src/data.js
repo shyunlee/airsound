@@ -32,4 +32,4 @@ export const soundList = getDemoData(soundDemo, 15)
 
 export const screenList = getDemoData(screenDemo, 15)
 
-export const moodList = getDemoData(moodDemo, 5)
+export const moodList = getDemoData(moodDemo, 7)

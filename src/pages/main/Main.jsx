@@ -1,13 +1,16 @@
 import React from 'react';
-import Console from '../console/Console';
-import MoodList from '../list_mood/MoodList';
-import ScreenList from '../list_screen/ScreenList';
-import SoundList from '../list_sound/SoundList';
+import Header from '../../components/header/Header'
+import Console from '../../components/console/Console';
+import MoodList from '../../components/list_mood/MoodList';
+import ScreenList from '../../components/list_screen/ScreenList';
+import SoundList from '../../components/list_sound/SoundList';
 import styles from './main.module.css'
 
-const Main = (props) => {
+const Main = ({isLogin}) => {
   return (
-    <main className={styles.main}>
+    <>
+      <Header isLogin={isLogin}/>
+      <main className={styles.main}>
       <section className={styles.main_left}>
         <MoodList />
       </section>
@@ -25,6 +28,8 @@ const Main = (props) => {
         <SoundList />
       </section>
     </main>
+    </>
+    
   )
 }
 
