@@ -15,7 +15,6 @@ const Header = ({isLogin, user}) => {
           :
           <>
             <span className={styles.control_login}>Login</span>
-            <span className={styles.control_signup}>Signup</span>
           </>
         }
       </div>

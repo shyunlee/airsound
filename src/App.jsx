@@ -18,7 +18,7 @@ function App() {
         <Route path='/player'>
           <Main isLogin={isLogin}/>
         </Route>
-        <Route path='/auth'>
+        <Route path='/login'>
           <UserAuth />
         </Route>
         <Route path='/mypage'>
