@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './user_auth.module.css';
 
-const UserAuth = (props) => {
-  const [toggleLogin, setToggleLogin] = useState(null)
+const UserAuth = (): JSX.Element => {
+  const [toggleLogin, setToggleLogin] = useState<Boolean | null>(null)
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -20,7 +20,7 @@ const UserAuth = (props) => {
     }
   }
 
-  const onChange = (event) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { name, value },
     } = event;

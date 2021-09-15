@@ -1,9 +1,11 @@
 import React from 'react';
+import { MoodT } from '../../types/types';
 import ScreenBall from '../ball_screen/ScreenBall'
 import SoundBall from '../ball_sound/SoundBall'
 import styles from './card_mood.module.css';
 
-const MoodCard = ({mood}) => {
+
+const MoodCard = ({mood}:{mood:MoodT}): JSX.Element => {
   return (
     <div className={styles.mood_card}>
       <div className={styles.mood_screen_container}>

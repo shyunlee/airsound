@@ -6,7 +6,11 @@ import ScreenList from '../../components/list_screen/ScreenList';
 import SoundList from '../../components/list_sound/SoundList';
 import styles from './main.module.css'
 
-const Main = ({isLogin}) => {
+type MainProps = {
+  isLogin:Boolean;
+}
+
+const Main = ({isLogin}: MainProps): JSX.Element => {
   return (
     <>
       <Header isLogin={isLogin}/>

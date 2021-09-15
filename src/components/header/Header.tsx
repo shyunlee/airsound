@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './header.module.css'
 
-const Header = ({isLogin, user}) => {
+const Header = ({isLogin}: {isLogin: Boolean}): JSX.Element => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>

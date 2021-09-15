@@ -7,7 +7,7 @@ import ScreenBall from '../ball_screen/ScreenBall'
 const selectedSound = soundList.slice(0,4)
 const selectedScreen = screenList[0]
 
-const Console = (props) => {
+const Console = (): JSX.Element => {
   
   return (
     <>

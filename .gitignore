@@ -11,6 +11,9 @@
 # production
 /build
 
+#Documents
+/apiDoc.yaml
+
 # misc
 .DS_Store
 .env.local

@@ -7,7 +7,7 @@ import Main from './pages/main/Main'
 import MyPage from './pages/mypage/MyPage';
 import UserAuth from './pages/user_auth/UserAuth';
 
-function App() {
+function App(): JSX.Element {
   const [isLogin, setIsLogin] = useState(false)
   return (
     <div className={styles.app}>

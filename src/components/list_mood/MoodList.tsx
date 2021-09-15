@@ -3,7 +3,7 @@ import { moodList } from '../../data';
 import MoodCard from '../card_mood/MoodCard';
 import styles from './mood_list.module.css'
 
-const MoodList = (props) => {
+const MoodList = (): JSX.Element => {
   return (
     <>
       <div className={styles.mood_list}>
