@@ -16,7 +16,7 @@ const SoundCard = ({sound}: {sound:SoundT}): JSX.Element => {
           <span className={styles.volume_point}></span>
           <span className={styles.volume_point}></span>
           <span className={styles.volume_point}></span>
-          <span className={styles.volume_number}>{sound.defaultVolume}</span>
+          <span className={styles.volume_number}>{sound.volume}</span>
           <div className={styles.volume_btn}>
             <img className={styles.volume_up} src="./images/arrow_btn.png" alt="volume_up" />
             <img className={styles.volume_down} src="./images/arrow_btn.png" alt="volume_down" />

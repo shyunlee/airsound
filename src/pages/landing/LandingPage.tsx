@@ -1,6 +1,10 @@
 import React from 'react';
 
-const LandingPage = (): JSX.Element => {
+type LandingProps = {
+  isLogin: Boolean;
+}
+
+const LandingPage = ({isLogin}: LandingProps): JSX.Element => {
   return (
     <div>Landing Page</div>
   )

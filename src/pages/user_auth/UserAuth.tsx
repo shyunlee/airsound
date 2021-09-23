@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
+import { UserLoginT, UserSignupT } from '../../types/types';
 import styles from './user_auth.module.css';
 
-const UserAuth = (): JSX.Element => {
+type UserAuthProps = {
+  onSignup: (user: UserSignupT) => Promise<Boolean>;
+  onLogin: (user: UserLoginT) => Promise<Boolean>;
+  onLogout: () => void;
+}
+
+const UserAuth = ({onLogin, onSignup, onLogout}: UserAuthProps): JSX.Element => {
+  const history = useHistory()
   const [toggleLogin, setToggleLogin] = useState<Boolean | null>(null)
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [srcImage, setSrcImage] = useState('')
+  const [alert, setAlert] = useState('')
 
   const toggle = () => {
     setEmail('')
@@ -37,11 +48,40 @@ const UserAuth = (): JSX.Element => {
     }
   };
 
+  const onReset = () => {
+    setEmail('')
+    setUsername('')
+    setPassword('')
+    setConfirmPassword('')
+    setSrcImage('')
+    setAlert('')
+  }
+
+  const clickSignup = async (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const didWork = await onSignup({email, username, password, srcImage})
+    if (!didWork) {
+      setAlert('User Already Registered')
+    }
+    onReset()
+    history.push('/player')
+  }
+
+  const clickLogin = async (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const didWork = await onLogin({email, password})
+    if (!didWork) {
+      setAlert('Login Failed')
+    }
+    onReset()
+    history.push('/player')
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.frame}>
         <div className={styles.signup_container}>
-          <form className={styles.signup_input}>
+          <form className={styles.signup_input} onSubmit={clickSignup}>
             <label className={styles.label}>
               Email<br/>
               <input className={styles.input} name='email' type="email" value={email} onChange={onChange} autoComplete='off'/>
@@ -67,7 +107,7 @@ const UserAuth = (): JSX.Element => {
           </div>
         </div>
         <div className={styles.login_container}>
-          <form className={styles.login_input}>
+          <form className={styles.login_input} onSubmit={clickLogin}>
             <label className={styles.label}>
               Email<br/>
               <input className={styles.input} name='email' type="email" value={email} onChange={onChange} autoComplete='off'/>

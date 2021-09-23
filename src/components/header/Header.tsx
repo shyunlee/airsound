@@ -1,7 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import styles from './header.module.css'
 
 const Header = ({isLogin}: {isLogin: Boolean}): JSX.Element => {
+  const history = useHistory()
+
+  const clickLogin = () => {
+    history.push('/login')
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -14,7 +21,7 @@ const Header = ({isLogin}: {isLogin: Boolean}): JSX.Element => {
             (<span className={styles.control_myprofile}>My Profile</span>)
           :
           <>
-            <span className={styles.control_login}>Login</span>
+            <span className={styles.control_login} onClick={clickLogin}>Login</span>
           </>
         }
       </div>

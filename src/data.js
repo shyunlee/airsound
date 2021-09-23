@@ -11,8 +11,7 @@ const soundDemo = {
   srcImage:'./images/christmas-tree.png',
   srcSound:'',
   active: false,
-  defaultVolume: 5,
-  defaultTimer: 10
+  volume: 5,
 }
 
 const screenDemo = {
