@@ -1,9 +1,16 @@
 import React from 'react';
 import { moodList } from '../../data';
+import { MoodListT, MoodT } from '../../types/types';
 import MoodCard from '../card_mood/MoodCard';
 import styles from './mood_list.module.css'
 
-const MoodList = (): JSX.Element => {
+type MoodListProps = {
+  onDelete: (moodId: number) => Promise<void>;
+  moodsList: MoodListT;
+  selectMood: (mood: MoodT) => void;
+}
+
+const MoodList = ({onDelete, moodsList, selectMood}: MoodListProps): JSX.Element => {
   return (
     <>
       <div className={styles.mood_list}>

@@ -25,4 +25,5 @@
 .ball_sound_container:hover {
   transform: scale(1.2);
   margin:1em 0;
+  cursor:pointer;
 }

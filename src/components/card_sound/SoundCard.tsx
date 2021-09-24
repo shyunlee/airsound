@@ -3,7 +3,12 @@ import styles from './card_sound.module.css'
 import SoundBall from '../ball_sound/SoundBall'
 import { SoundT } from '../../types/types';
 
-const SoundCard = ({sound}: {sound:SoundT}): JSX.Element => {
+type SoundCardProps = {
+  sound: SoundT;
+  unSelectSound: (soundId: number) => void;
+}
+
+const SoundCard = ({sound, unSelectSound}: SoundCardProps): JSX.Element => {
   return (
     <div className={styles.card}>
       <div className={styles.sound_ball}>

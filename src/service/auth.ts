@@ -1,3 +1,4 @@
+import { EditUserRequestT } from './../types/types';
 import HttpClient from '../network/http';
 import { UserLoginT, UserSignupT, UserT , UserReponseT} from '../types/types';
 
@@ -38,8 +39,12 @@ class AuthService {
     return response
   }
 
-  async editUserInfo() {
-    console.log('edit user info')
+  async editUserInfo(edit: EditUserRequestT) {
+    const response = await this.http.fetch('/setting', {
+      method: 'POST',
+      data: JSON.stringify(edit)
+    }) 
+    return response
   }
 
 }

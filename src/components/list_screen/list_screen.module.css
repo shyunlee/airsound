@@ -6,12 +6,16 @@
   padding: 0.5em;
   overflow-x: scroll;
   white-space: nowrap;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 0.8em;
 }
 
 .screen_ball_container {
   display:inline-block;
   transition: all 0.1s linear;
   width: 3.5em;
+  min-width: 3.5em;
   background-color: whitesmoke;
   border-radius: 50%;
   padding: 0.2em;
@@ -21,4 +25,5 @@
 .screen_ball_container:hover {
   transform: scale(1.2);
   margin:0 1em;
+  cursor:pointer;
 }

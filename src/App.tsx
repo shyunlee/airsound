@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 
 import styles from './app.module.css';
 import LandingPage from './pages/landing/LandingPage';
-import Main from './pages/main/Main'
+import Player from './pages/Player/Player'
 import MyPage from './pages/mypage/MyPage';
 import UserAuth from './pages/user_auth/UserAuth';
-import { UserLoginT, UserSignupT, UserT } from './types/types';
+import { EditUserRequestT, UserLoginT, UserSignupT, UserT } from './types/types';
 import  AuthService  from './service/auth';
 import MediaService from './service/media';
 
@@ -33,6 +33,7 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
     if (result.message === 'ok') {
       const userInfo = result.data! as UserT
       setUser(userInfo)
+      setIsLogin(true)
       return true
     }
     return false
@@ -43,6 +44,7 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
     if (result.message === 'ok') {
       const userInfo = result.data! as UserT
       setUser(userInfo)
+      setIsLogin(true)
       return true
     }
     return false
@@ -52,10 +54,27 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
     const response = await authService.logout()
     if (response.message === 'ok') {
       setUser(undefined)
+      setIsLogin(false)
+    }
+  }
+
+  const eidtUserInfo = async (edit:EditUserRequestT) => {
+    const response = await authService.editUserInfo(edit)
+    if (response.message === 'ok' && response.data.message === 'update completed') {
+      setUser(prev => ({
+        ...prev,
+        ...response.data
+      }))
+      return true
+    } else {
+      setUser(prev => ({
+        ...prev,
+        ...response.data
+      }))
+      return false
     }
   }
   
-  console.log(process.env.REACT_APP_BASE_URL)
   return (
     <div className={styles.app}>
       <Switch>
@@ -63,13 +82,13 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
           <LandingPage isLogin={isLogin}/>
         </Route>
         <Route path='/player'>
-          <Main isLogin={isLogin}/>
+          <Player isLogin={isLogin} userInfo={user} onLogout={logout} mediaService={mediaService}/>
         </Route>
         <Route path='/login'>
           <UserAuth onLogin={login} onSignup={signup} onLogout={logout}/>
         </Route>
         <Route path='/mypage'>
-          <MyPage userInfo={user}/>
+          <MyPage userInfo={user} onEditUserInfo={eidtUserInfo}/>
         </Route>
       </Switch>
     </div>
