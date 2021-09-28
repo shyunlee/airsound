@@ -3,15 +3,14 @@ import { VideoT } from '../../types/types';
 import styles from './ball_screen.module.css'
 
 type ScreenBallProps = {
-  screen: VideoT;
-  isActive?: boolean
+  video: VideoT | undefined;
 }
 
 
-const ScreenBall = ({screen, isActive}: ScreenBallProps): JSX.Element => {
+const ScreenBall = ({video}: ScreenBallProps): JSX.Element => {
   return (
     <div className={styles.screen_ball}>
-      <img className={styles.screen_ball_img} src={screen.srcImage} alt={screen.title} />
+      <img className={styles.screen_ball_img} src={video?.srcImage} alt={video?.title} />
     </div>
   )
 }

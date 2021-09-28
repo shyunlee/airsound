@@ -4,11 +4,13 @@
   height:100%;
   width: 100%;
   padding: 0.5em;
-  overflow-x: scroll;
+  overflow-x: auto;
   white-space: nowrap;
   display: flex;
   align-items: flex-end;
   padding-bottom: 0.8em;
+  justify-content: center;
+  padding-left: 5em;
 }
 
 .screen_ball_container {

@@ -21,14 +21,14 @@ const SoundCard = ({sound, unSelectSound}: SoundCardProps): JSX.Element => {
           <span className={styles.volume_point}></span>
           <span className={styles.volume_point}></span>
           <span className={styles.volume_point}></span>
-          <span className={styles.volume_number}>{sound.volume}</span>
+          <span className={styles.volume_number}>{sound.customVolume?sound.customVolume:sound.volume}</span>
           <div className={styles.volume_btn}>
             <img className={styles.volume_up} src="./images/arrow_btn.png" alt="volume_up" />
             <img className={styles.volume_down} src="./images/arrow_btn.png" alt="volume_down" />
           </div>
         </div>
       </div>
-      <button className={styles.remove_btn}>X</button>
+      <button className={styles.remove_btn} onClick={() => unSelectSound(sound.id!)}>X</button>
     </div>
   )
 }

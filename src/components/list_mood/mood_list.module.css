@@ -1,12 +1,25 @@
 @value defaultColor, lightBlack, containerBack from '../../common/colors.css';
 
+.mood_list_container {
+  height: 100%;
+  width: 100%;
+  display:flex;
+  overflow: hidden;
+}
+
 .mood_list {
   height: 100%;
   width: 100%;
   padding: 0 1em;
   background-color: containerBack;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x:hidden;
   border-radius: 0.5em;
+  transition: transform 0.5s linear;
+}
+
+.mood_list.closed {
+  transform: translateX(-100%)
 }
 
 .mood_list_bar {
@@ -14,27 +27,38 @@
   background-color: defaultColor;
   border-radius: 15px;
   width:0.25em;
-  height: 15em;
+  height: 20em;
   margin-left: 0.5em;
+  margin-right: 0.3em;
 }
 
 .mood_list_toggle {
+  display: flex;
   margin-left:0.2em;
+  align-items: center;
+  transition: transform 0.5s linear;
+
 }
 
-.toggle_btn.opened {
-  width: 1.2em;
+.mood_list_toggle.closed {
+  /* transform: translateX(-850%) */
+  transform: translateX(-20em)
+  
+}
+
+.toggle_btn {
+  height: 0.8em;
   transition: all 0.1s linear;
   transform: rotate(-90deg)
 }
 
 .toggle_btn.closed {
-  width: 1.2em;
-  transition: all 0.1s linear;
+  height: 0.8em;
+  transition: all 0.2s linear;
   transform: rotate(90deg)
 }
 
-.toggle_btn.opened:hover {
+.toggle_btn:hover {
   transform: rotate(-90deg) scale(1.3)
 }
 

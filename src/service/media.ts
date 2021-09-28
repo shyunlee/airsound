@@ -47,7 +47,7 @@ class MediaService {
   }
 
   async deleteMood(moodId: number) {
-    const response = await this.http.fetch(`/media/:${moodId}`, {
+    const response = await this.http.fetch(`/media/${moodId}`, {
       method:'DELETE'
     })
     return response

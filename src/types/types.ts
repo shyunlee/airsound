@@ -84,3 +84,8 @@ export type SaveOrEditMoodRequestT = {
   videoId?: number;
   sounds: {soundId:number, customVolume:number}[]
 }
+
+export type ResponseDataT = {
+  message: string;
+  data?: any;
+}

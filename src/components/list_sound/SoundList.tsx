@@ -1,5 +1,4 @@
 import React from "react";
-import { soundList } from "../../data";
 import { SoundT } from "../../types/types";
 import SoundBall from "../ball_sound/SoundBall";
 import styles from "./list_sound.module.css";
@@ -17,18 +16,20 @@ const SoundList = ({
   selectSound,
   unSelectSound,
 }: SoundListProps): JSX.Element => {
+
   return (
     <div className={styles.sound_list}>
-      {soundList.map((item) => (
-        <div className={styles.ball_sound_container} key={item.id}>
-          <SoundBall
-            sound={item}
-            selectSound={selectSound}
-            unSelectSound={unSelectSound}
-            isActive={consoleSounds.filter(selected=> selected.id === item.id).length === 0 ? false : true}
-          />
-        </div>
-      ))}
+      {soundsList.map((item) => {
+        return consoleSounds.filter((selected) => selected.id === item.id).length === 0 ? (
+          <div className={styles.ball_sound_container} key={item.id} onClick={() => selectSound(item)}>
+            <SoundBall sound={item} />
+          </div>
+        ) : (
+          <div className={styles.ball_sound_container} key={item.id} onClick={() => unSelectSound(item.id!)}>
+            <SoundBall sound={item} />
+          </div>
+        );
+      })}
     </div>
   );
 };

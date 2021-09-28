@@ -3,10 +3,12 @@
 .mood_card {
   display:flex;
   padding-left:0.5em;
+  padding-right: 0.5em;
   border: 1px solid defaultColor;
   margin: 1em 0;
   border-radius: 10px;
   background-color: lightBlack;
+  width: 100%;
   min-width: 15em;
 }
 
@@ -28,8 +30,16 @@
   display:flex;
   flex-direction: column;
   width: 100%;
-  /* align-items: center; */
   padding:0.3em 0;
+  overflow: hidden;
+}
+
+.mood_sounds_container {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 8em;
+  align-items: flex-start;
 }
 
 .mood_title {
@@ -37,24 +47,18 @@
   text-align: right;
   width: 90%;
   padding:0.2em 0.5em;
-  margin-bottom: 0.2em;
   margin-bottom: 0.5em;
   border-bottom: 2px solid defaultColor;
-}
-
-.mood_sounds_container {
-  display:flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
+  margin-left: 1em;
 }
 
 .mood_sounds {
   display:flex;
-  width: 100%;
+  /* width: 100%; */
   justify-content: flex-start;
-  padding-left:0.8em;
-  overflow-x: auto;
+  padding-left:1em;
+  overflow: hidden;
+
 }
 
 .sound_ball {
@@ -70,7 +74,6 @@
   display:flex;
   justify-content: flex-end;
   padding:0.5em 0;
-  padding-right: 0.5em;
 }
 
 .mood_control_btn {
@@ -81,4 +84,5 @@
   height: 2em;
   background-color: thistle;
   border:0;
+  cursor: pointer;
 }

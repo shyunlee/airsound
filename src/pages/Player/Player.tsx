@@ -40,7 +40,7 @@ const Player = ({
       setVideos(result.videos);
       setMoods(result.moods);
     });
-  }, [mediaService, isLogin]);
+  }, [mediaService]);
 
   const onSound = (selectedSound: SoundT) => {
     setConsoleSounds(prev => prev.concat(selectedSound))
@@ -79,14 +79,6 @@ const Player = ({
     consoleVideo: VideoT,
     consoleSounds: SoundT[]
   ) => {
-    if (!consoleMoodInfo.id) {
-      // cannot save because it would've been already saved one.
-      return;
-    }
-    if (consoleSounds.length === 0) {
-      // cannot save because there is no sounds to save
-      return;
-    }
     const requestData = {
       title: consoleMoodInfo.title,
       timer: consoleMoodInfo.timer,
@@ -97,13 +89,27 @@ const Player = ({
       })),
     };
     const response = await mediaService.saveMood(requestData);
+    if (response.message === 'ok') {
+      const moodAdded = {
+        id: response.data! as number,
+        title: consoleMoodInfo.title,
+        timer: consoleMoodInfo.timer,
+        video: consoleVideo,
+        sounds: consoleSounds
+      }
+      setMoods(prev => prev.concat(moodAdded))
+      return true
+    }
+    return false
   };
 
   const editMood = (moodId: number) => {};
 
   const deleteMood = async (moodId: number) => {
     const response = await mediaService.deleteMood(moodId);
-    console.log(response);
+    if (response.message === 'ok') {
+      setMoods(prev => prev.filter(mood => mood.id !== moodId))
+    }
   };
 
   return (
@@ -116,15 +122,16 @@ const Player = ({
         <section className={styles.main_center}>
           <section className={styles.center}>
             <section className={styles.center_top}>
-              <Console
-                onSave={saveMood}
-                onDelete={deleteMood}
-                selectedVideo={consoleVideo}
-                selectedSoundsList={consoleSounds}
-                selectedMoodInfo={consoleMoodInfo}
-                unSelectMood={offMood}
-                unSelectSound={offSound}
-              />
+                <Console
+                  onSave={saveMood}
+                  onDelete={deleteMood}
+                  selectedVideo={consoleVideo}
+                  selectedSoundsList={consoleSounds}
+                  selectedMoodInfo={consoleMoodInfo}
+                  unSelectMood={offMood}
+                  unSelectVideo={offVideo}
+                  unSelectSound={offSound}
+                />
             </section>
             <section className={styles.center_bottom}>
               <ScreenList videosList={videos} selectVideo={onVideo} unSelectVideo={offVideo} consoleVideo={consoleVideo?consoleVideo:undefined}/>

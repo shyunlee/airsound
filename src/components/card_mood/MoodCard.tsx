@@ -4,13 +4,18 @@ import ScreenBall from '../ball_screen/ScreenBall'
 import SoundBall from '../ball_sound/SoundBall'
 import styles from './card_mood.module.css';
 
+type MoodCardProps = {
+  mood: MoodT;
+  selectMood: (mood: MoodT) => void;
+  onDelete: (moodId: number) => Promise<void>;
+}
 
-const MoodCard = ({mood}:{mood:MoodT}): JSX.Element => {
+const MoodCard = ({mood, selectMood, onDelete}: MoodCardProps): JSX.Element => {
   return (
     <div className={styles.mood_card}>
       <div className={styles.mood_screen_container}>
         <div className={styles.mood_screen}>
-          <ScreenBall screen={mood.video}/>
+          <ScreenBall video={mood.video}/>
         </div>
       </div>
       <div className={styles.mood_info}>
@@ -23,9 +28,8 @@ const MoodCard = ({mood}:{mood:MoodT}): JSX.Element => {
           </div>
         </div>
         <div className={styles.mood_control}>
-          <button className={`${styles.mood_control_btn} ${styles.play}`}>A</button>
-          <button className={`${styles.mood_control_btn} ${styles.edit}`}>B</button>
-          <button className={`${styles.mood_control_btn} ${styles.delete}`}>C</button>
+          <button className={`${styles.mood_control_btn} ${styles.play}`} onClick={() => selectMood(mood)}>P</button>
+          <button className={`${styles.mood_control_btn} ${styles.delete}`} onClick={() => onDelete(mood.id!)}>D</button>
         </div>
       </div>
       
