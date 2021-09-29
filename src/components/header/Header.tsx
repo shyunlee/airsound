@@ -26,13 +26,10 @@ const Header = ({isLogin, userInfo, onLogout}: HeaderProps): JSX.Element => {
       <div className={styles.control_container}>
         {
           isLogin ?
-            (<span className={styles.control_myprofile}>
-              <Avatar srcImage={userInfo?.srcImage} username={userInfo?.username}/>
-              <button onClick={onLogout}>Logout</button>
-            </span>)
+            <Avatar srcImage={userInfo?.srcImage} email={userInfo?.email} username={userInfo?.username} onLogout={onLogout}/>
           :
           <>
-            <span className={styles.control_login} onClick={clickLogin}>Login</span>
+            <button className={styles.control_login} onClick={clickLogin}>Login</button>
           </>
         }
       </div>

@@ -51,16 +51,5 @@
   cursor: pointer;
 }
 
-.control_myprofile {
-  text-align: center;
-  width: 3em;
-  height: 3em;
-  padding: 0.2em;
-  border-radius: 10%;
-}
-
-.control_myprofile:hover {
-  background-color: defaultColor;
-}
 
 

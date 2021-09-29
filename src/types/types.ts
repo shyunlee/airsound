@@ -79,6 +79,7 @@ export type MoodOnConsoleT = {
 }
 
 export type SaveOrEditMoodRequestT = {
+  id?: number;
   title: string;
   timer: number;
   videoId?: number;

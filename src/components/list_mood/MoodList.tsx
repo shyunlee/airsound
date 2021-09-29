@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { moodList } from '../../data';
 import { MoodListT, MoodT } from '../../types/types';
 import MoodCard from '../card_mood/MoodCard';
 import styles from './mood_list.module.css'

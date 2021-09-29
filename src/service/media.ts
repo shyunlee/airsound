@@ -1,4 +1,3 @@
-import { AxiosInstance } from 'axios';
 import HttpClient from '../network/http';
 import { MoodResponseT, SaveOrEditMoodRequestT } from '../types/types';
 
@@ -42,8 +41,12 @@ class MediaService {
     return response
   }
 
-  async editMood(moodId: number, data: SaveOrEditMoodRequestT) {
-    console.log('edit mood')
+  async editMood(data: SaveOrEditMoodRequestT) {
+    const response = await this.http.fetch('/media/editmood', {
+      method: 'POST',
+      data: data
+    })
+    return response
   }
 
   async deleteMood(moodId: number) {

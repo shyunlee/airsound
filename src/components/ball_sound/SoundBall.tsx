@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { SoundT } from '../../types/types';
 import styles from './sound_ball.module.css';
 

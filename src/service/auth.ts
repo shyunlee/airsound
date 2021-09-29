@@ -1,6 +1,6 @@
 import { EditUserRequestT } from './../types/types';
 import HttpClient from '../network/http';
-import { UserLoginT, UserSignupT, UserT , UserReponseT} from '../types/types';
+import { UserLoginT, UserSignupT, UserReponseT} from '../types/types';
 
 class AuthService {
   http: HttpClient;

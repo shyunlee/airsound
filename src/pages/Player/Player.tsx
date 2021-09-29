@@ -32,7 +32,7 @@ const Player = ({
   const [moods, setMoods] = useState<MoodT[]>([]);
   const [consoleVideo, setConsoleVideo] = useState<VideoT>();
   const [consoleSounds, setConsoleSounds] = useState<SoundT[]>([]);
-  const [consoleMoodInfo, setConsoleMoodInfo] = useState<MoodOnConsoleT>({title: "", timer: 5600});
+  const [consoleMoodInfo, setConsoleMoodInfo] = useState<MoodOnConsoleT>({title:'', timer: 3});
 
   useEffect(() => {
     mediaService.getAllMedia().then((result) => {
@@ -40,7 +40,7 @@ const Player = ({
       setVideos(result.videos);
       setMoods(result.moods);
     });
-  }, [mediaService]);
+  }, [mediaService, isLogin]);
 
   const onSound = (selectedSound: SoundT) => {
     setConsoleSounds(prev => prev.concat(selectedSound))
@@ -61,25 +61,29 @@ const Player = ({
   const onMood = (selectedMood: MoodT) => {
     setConsoleVideo(selectedMood.video)
     setConsoleSounds(selectedMood.sounds)
-    setConsoleMoodInfo({id: selectedMood.id, title: selectedMood.title, timer: selectedMood.timer})
+    setConsoleMoodInfo(prev => ({
+      ...prev,
+      id: selectedMood.id, title: selectedMood.title, timer: selectedMood.timer
+    }))
   };
 
   const offMood = () => {
     setConsoleVideo(undefined)
     setConsoleSounds([])
-    setConsoleMoodInfo({title: '', timer: 5600})
+    setConsoleMoodInfo({title:'', timer: 3})
   };
 
   const controlVolume = (soundId: number, isVolumeUp: boolean) => {};
 
   const toggleMute = () => {};
 
-  const saveMood = async (
+  const saveOrEditMood = async (
     consoleMoodInfo: MoodOnConsoleT,
     consoleVideo: VideoT,
     consoleSounds: SoundT[]
   ) => {
     const requestData = {
+      id: consoleMoodInfo.id,
       title: consoleMoodInfo.title,
       timer: consoleMoodInfo.timer,
       videoId: consoleVideo?.id,
@@ -88,22 +92,37 @@ const Player = ({
         customVolume: sound.customVolume!,
       })),
     };
-    const response = await mediaService.saveMood(requestData);
-    if (response.message === 'ok') {
-      const moodAdded = {
-        id: response.data! as number,
-        title: consoleMoodInfo.title,
-        timer: consoleMoodInfo.timer,
-        video: consoleVideo,
-        sounds: consoleSounds
-      }
-      setMoods(prev => prev.concat(moodAdded))
+    console.log(requestData)
+    let response;
+    if (requestData.id) {
+      response = await mediaService.editMood(requestData)
+    } else {
+      response = await mediaService.saveMood(requestData);
+    }
+    const newMood = {
+      id: response.data! as number,
+      title: consoleMoodInfo.title,
+      timer: consoleMoodInfo.timer,
+      video: consoleVideo,
+      sounds: consoleSounds
+    }
+    if (response.message === 'saved') {
+      setMoods(prev => prev.concat(newMood))
+      return true
+    }
+    if (response.message === 'updated') {
+      setMoods(prev => {
+        return prev.map(mood => {
+          if (mood.id === newMood.id) {
+            return newMood
+          }
+          else return mood
+        })
+      })
       return true
     }
     return false
   };
-
-  const editMood = (moodId: number) => {};
 
   const deleteMood = async (moodId: number) => {
     const response = await mediaService.deleteMood(moodId);
@@ -123,7 +142,7 @@ const Player = ({
           <section className={styles.center}>
             <section className={styles.center_top}>
                 <Console
-                  onSave={saveMood}
+                  onSaveOrEdit={saveOrEditMood}
                   onDelete={deleteMood}
                   selectedVideo={consoleVideo}
                   selectedSoundsList={consoleSounds}

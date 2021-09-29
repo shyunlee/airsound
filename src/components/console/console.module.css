@@ -105,24 +105,36 @@
   position: absolute;
   top: 0.5em;
   right: 0em;
-  width: 10em;
+  width: 12em;
+}
+
+.mood_info p {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 0.5em;
+  color: defaultColor;
+  font-style: italic;
+  font-size: 0.8rem;
 }
 
 .mood_info input {
-  width: 100%;
-  margin-bottom: 0.5em;
+  width: 7em;
   font-size: 1rem;
   outline: none;
   border: none;
   background: none;
   color: whitesmoke;
-  text-align:end;
-  padding-right: 1em;
+  text-align:start;
+  margin-left:0.5em;
 }
 
 .mood_info input::placeholder {
   color: whitesmoke;
-  opacity: 1;
+  opacity: 0.8;
+  font-style: italic;
 }
 
 .console_toggle {

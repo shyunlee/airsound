@@ -1,4 +1,93 @@
+@value defaultColor, containerBack, lightBlack from '../../common/colors.css';
+
+.avatar {
+  text-align:left;
+  width: 3em;
+  height: 3em;
+  padding: 0.2em;
+  border-radius: 10%;
+  position: relative;
+}
+
 .avatar_img {
   width: 100%;
   border-radius:50%;
+}
+
+.avatar:hover {
+  background-color: defaultColor;
+}
+
+.avatar:hover .avatar_drop_container {
+  visibility: visible;
+}
+
+.avatar_drop_container {
+  z-index:1;
+  position:absolute;
+  padding-top:0.3em;
+  padding-bottom: 0.5em;
+  right: -1em;
+  visibility: hidden;
+}
+
+.avatar_drop {
+  padding-top: 0.5em;
+  background-color: containerBack;
+}
+
+.avatar_drop_top {
+  display: flex;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.user_img {
+  width: 2em;
+  height: 2em;
+}
+
+.user_info {
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+  padding-left: 0.5em;
+}
+
+.user_info p {
+  margin:0;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.email {
+  padding-top: 0.2em;
+}
+
+.avatar_drop_bottom {
+  width: 12em;
+}
+
+.avatar_drop_menu {
+  width: 100%;
+  height:2em;
+  text-align:start;
+  line-height: 0.8;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  /* font-weight: bold; */
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0.5em;
+  padding-left: 0.8em;
+}
+
+.avatar_drop_menu:hover {
+  background-color: defaultColor;
+  color: lightBlack;
 }
