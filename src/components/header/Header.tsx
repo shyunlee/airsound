@@ -17,12 +17,16 @@ const Header = ({isLogin, userInfo, onLogout}: HeaderProps): JSX.Element => {
     history.push('/login')
   }
 
+  const clickLogo = () => {
+    history.push('/')
+  }
+
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <div className={styles.logo} onClick={clickLogo}>
         <img className={styles.logo_img} src="./images/christmas-tree.png" alt="logo" />
       </div>
-      <div className={styles.title}>Air Sounds</div>
+      <div className={styles.title}>Wrap Sounds</div>
       <div className={styles.control_container}>
         {
           isLogin ?

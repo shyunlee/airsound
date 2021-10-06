@@ -13,6 +13,7 @@
 .logo {
   flex: 0 0 20%;
   padding-left: 8em;
+  cursor: pointer;
 }
 
 .logo_img {

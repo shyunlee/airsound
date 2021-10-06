@@ -25,6 +25,22 @@ class AuthService {
     return response
   }
 
+  async googleLogin (authCode: string) {
+    const response = await this.http.fetch('/auth/google', {
+      method: 'POST',
+      data:JSON.stringify({authCode})
+    })
+    return response
+  }
+
+  async githubLogin (authCode: string) {
+    const response = await this.http.fetch('/auth/github', {
+      method: 'POST',
+      data:JSON.stringify({authCode})
+    })
+    return response
+  }
+
   async logout() {
     const response = await this.http.fetch('/auth/logout', {
       method: 'GET'

@@ -53,6 +53,7 @@
   position: relative;
   width: 100%;
   height: 22%;
+  margin-bottom: 0.3em;
 }
 
 .selected_screen {

@@ -40,14 +40,29 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
   }
 
   const login = async (user: UserLoginT) => {
-    const result = await authService.login(user)
-    if (result.message === 'ok') {
+    const result = await authService.login(user!)
+    if (result?.message === 'ok') {
       const userInfo = result.data! as UserT
       setUser(userInfo)
       setIsLogin(true)
       return true
     }
     return false
+  }
+
+  const authLogin = async (provider: string, authCode: string) => {
+    let result;
+    if (provider === 'google') {
+      result = await authService.googleLogin(authCode)
+    } else if (provider === 'github') {
+      result = await authService.githubLogin(authCode)
+    }
+    console.log(result)
+    if (result?.message === 'ok') {
+      const userInfo = result.data! as UserT
+      setUser(userInfo)
+      setIsLogin(true)
+    }
   }
 
   const logout = async () => {
@@ -85,7 +100,7 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
           <Player isLogin={isLogin} userInfo={user} onLogout={logout} mediaService={mediaService}/>
         </Route>
         <Route path='/login'>
-          <UserAuth onLogin={login} onSignup={signup} onLogout={logout}/>
+          <UserAuth isLogin={isLogin} onLogin={login} onSignup={signup} onAuthLogin={authLogin}/>
         </Route>
         <Route path='/mypage'>
           <MyPage userInfo={user} onEditUserInfo={eidtUserInfo}/>

@@ -4,7 +4,7 @@
   text-align:left;
   width: 3em;
   height: 3em;
-  padding: 0.2em;
+  padding: 0.07em;
   border-radius: 10%;
   position: relative;
 }
@@ -45,16 +45,19 @@
 .user_img {
   width: 2em;
   height: 2em;
+  transform: translateY(10%)
 }
 
 .user_info {
   font-size: 0.7em;
   letter-spacing: 0.1em;
   padding-left: 0.5em;
+  margin-right: 1em;
 }
 
 .user_info p {
   margin:0;
+  white-space: nowrap;
 }
 
 .username {
@@ -67,7 +70,8 @@
 }
 
 .avatar_drop_bottom {
-  width: 12em;
+  /* width: 12em; */
+  width: 100%;
 }
 
 .avatar_drop_menu {
