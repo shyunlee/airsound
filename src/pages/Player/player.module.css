@@ -4,7 +4,23 @@
   height: 100%;
   width: 100%;
   /* min-width: 84em; */
-  background-color: lightBlack;
+  /* background-color: lightBlack; */
+  position: relative;
+  /* z-index: 1; */
+  overflow: hidden;
+}
+
+.video_frame {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  min-width: 120em;
+}
+
+.player_control {
+  /* height: 100%; */
+  width: 100%;
+  z-index: 2;
 }
 
 .main {
@@ -67,11 +83,6 @@
 }
 
 
-::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
-  border-radius: 1em;
-}
 
 /* ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -79,9 +90,5 @@
 	background-color: #F5F5F5;
 } */
 
-::-webkit-scrollbar-thumb{
-  background-color: aqua;
-  border-radius: 5em;
 
-}
 

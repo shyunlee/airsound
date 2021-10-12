@@ -73,7 +73,7 @@ const Player = ({
     setConsoleMoodInfo({title:'', timer: 3})
   };
 
-  const controlVolume = (soundId: number, isVolumeUp: boolean) => {};
+  const controlVolume = (soundId: number, customVol: number) => {};
 
   const toggleMute = () => {};
 
@@ -133,34 +133,41 @@ const Player = ({
 
   return (
     <div className={styles.player}>
-      <Header isLogin={isLogin} userInfo={userInfo} onLogout={onLogout} />
-      <main className={styles.main}>
-        <section className={styles.main_left}>
-          <MoodList moodsList={moods} onDelete={deleteMood}  selectMood={onMood}/>
-        </section>
-        <section className={styles.main_center}>
-          <section className={styles.center}>
-            <section className={styles.center_top}>
-                <Console
-                  onSaveOrEdit={saveOrEditMood}
-                  onDelete={deleteMood}
-                  selectedVideo={consoleVideo}
-                  selectedSoundsList={consoleSounds}
-                  selectedMoodInfo={consoleMoodInfo}
-                  unSelectMood={offMood}
-                  unSelectVideo={offVideo}
-                  unSelectSound={offSound}
-                />
-            </section>
-            <section className={styles.center_bottom}>
-              <ScreenList videosList={videos} selectVideo={onVideo} unSelectVideo={offVideo} consoleVideo={consoleVideo?consoleVideo:undefined}/>
+      {
+        consoleVideo ?
+        <video className={styles.video_frame} src={consoleVideo?.srcVideo} autoPlay loop muted></video>
+        : ''
+      }
+      <div className={styles.player_control}>
+        <Header isLogin={isLogin} userInfo={userInfo} onLogout={onLogout} />
+        <main className={styles.main}>
+          <section className={styles.main_left}>
+            <MoodList moodsList={moods} onDelete={deleteMood}  selectMood={onMood}/>
+          </section>
+          <section className={styles.main_center}>
+            <section className={styles.center}>
+              <section className={styles.center_top}>
+                  <Console
+                    onSaveOrEdit={saveOrEditMood}
+                    onDelete={deleteMood}
+                    selectedVideo={consoleVideo}
+                    selectedSoundsList={consoleSounds}
+                    selectedMoodInfo={consoleMoodInfo}
+                    unSelectMood={offMood}
+                    unSelectVideo={offVideo}
+                    unSelectSound={offSound}
+                  />
+              </section>
+              <section className={styles.center_bottom}>
+                <ScreenList videosList={videos} selectVideo={onVideo} unSelectVideo={offVideo} consoleVideo={consoleVideo?consoleVideo:undefined}/>
+              </section>
             </section>
           </section>
-        </section>
-        <section className={styles.main_right}>
-          <SoundList soundsList={sounds} selectSound={onSound} unSelectSound={offSound} consoleSounds={consoleSounds}/>
-        </section>
-      </main>
+          <section className={styles.main_right}>
+            <SoundList soundsList={sounds} selectSound={onSound} unSelectSound={offSound} consoleSounds={consoleSounds}/>
+          </section>
+        </main>
+      </div>
     </div>
   );
 };

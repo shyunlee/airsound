@@ -27,6 +27,12 @@ export type EditUserRequestT = UserT & {
   newPassowrd?: string;
 } 
 
+export type EditUserResponseT = UserReponseT & {
+  data?: UserT & {
+    message: string;
+  }
+}
+
 export type VideoT = {
   id?: number;
   title: string;

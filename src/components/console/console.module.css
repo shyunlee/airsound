@@ -17,6 +17,17 @@
   transition: transform 0.5s linear;
 }
 
+.console::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  border-radius: 1em;
+}
+
+.console::-webkit-scrollbar-thumb{
+  background-color: aqua;
+  border-radius: 5em;
+}
+
 .console.closed {
   transform:translateY(-27em);
 }

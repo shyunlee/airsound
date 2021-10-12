@@ -1,6 +1,6 @@
 import { EditUserRequestT } from './../types/types';
 import HttpClient from '../network/http';
-import { UserLoginT, UserSignupT, UserReponseT} from '../types/types';
+import { UserLoginT, UserSignupT, UserReponseT, EditUserResponseT} from '../types/types';
 
 class AuthService {
   http: HttpClient;
@@ -26,7 +26,7 @@ class AuthService {
   }
 
   async googleLogin (authCode: string) {
-    const response = await this.http.fetch('/auth/google', {
+    const response: UserReponseT = await this.http.fetch('/auth/google', {
       method: 'POST',
       data:JSON.stringify({authCode})
     })
@@ -34,7 +34,7 @@ class AuthService {
   }
 
   async githubLogin (authCode: string) {
-    const response = await this.http.fetch('/auth/github', {
+    const response: UserReponseT = await this.http.fetch('/auth/github', {
       method: 'POST',
       data:JSON.stringify({authCode})
     })
@@ -42,21 +42,22 @@ class AuthService {
   }
 
   async logout() {
-    const response = await this.http.fetch('/auth/logout', {
+    const response: any = await this.http.fetch('/auth/logout', {
       method: 'GET'
     })
     return response
   }
 
   async me() {
-    const response = await this.http.fetch('/auth/me', {
+    const response: any = await this.http.fetch('/auth/me', {
       method: 'GET'
     })
     return response
   }
 
+  
   async editUserInfo(edit: EditUserRequestT) {
-    const response = await this.http.fetch('/setting', {
+    const response: EditUserResponseT = await this.http.fetch('/setting', {
       method: 'POST',
       data: JSON.stringify(edit)
     }) 

@@ -61,7 +61,10 @@ const Console = ({
     window.alert('Something went wrong')
   }
 
-  console.log('console')
+  const pauseOrPlayAllSounds = () => {
+    setIsPlaying(!isPlaying)
+  }
+
   return (
     <>
     {
@@ -70,7 +73,7 @@ const Console = ({
       :
       <div className={styles.console_controller}>
         <div className={styles.console_contoller_box}>
-          <button className={`${styles.console_control_btn} ${styles.play}`}>
+          <button className={`${styles.console_control_btn} ${styles.play}`} onClick={pauseOrPlayAllSounds}>
             {
               isPlaying? <FontAwesomeIcon icon={faPause}/> : <FontAwesomeIcon icon={faPlay}/>
             }
@@ -124,7 +127,7 @@ const Console = ({
         </div>
         }
           <div>
-            {selectedSoundsList.map(item => <SoundCard key={item.id} sound={item} unSelectSound={unSelectSound}/>)}
+            {selectedSoundsList.map(item => <SoundCard key={item.id} sound={item} unSelectSound={unSelectSound} isPlaying={isPlaying}/>)}
           </div>
         </div>
           <div className={`${styles.console_toggle} ${toggleDisplay?styles.closed:''}`}>

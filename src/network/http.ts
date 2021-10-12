@@ -1,7 +1,8 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { ResponseDataT } from "../types/types";
 
 interface HttpClientI {
-  fetch: (url: string, options:AxiosRequestConfig) => void;
+  fetch: (url: string, options:AxiosRequestConfig) => Promise<ResponseDataT>
 }
 
 
@@ -16,7 +17,7 @@ class HttpClient implements HttpClientI {
     })
   }
 
-  async fetch (url: string, options:AxiosRequestConfig) {
+  async fetch (url: string, options:AxiosRequestConfig): Promise<ResponseDataT> {
     const {data, method, headers} = options
     const requestConfig = {
       url,

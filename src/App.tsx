@@ -57,7 +57,6 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
     } else if (provider === 'github') {
       result = await authService.githubLogin(authCode)
     }
-    console.log(result)
     if (result?.message === 'ok') {
       const userInfo = result.data! as UserT
       setUser(userInfo)
@@ -75,7 +74,7 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
 
   const eidtUserInfo = async (edit:EditUserRequestT) => {
     const response = await authService.editUserInfo(edit)
-    if (response.message === 'ok' && response.data.message === 'update completed') {
+    if (response.message === 'ok' && response.data?.message === 'update completed') {
       setUser(prev => ({
         ...prev,
         ...response.data

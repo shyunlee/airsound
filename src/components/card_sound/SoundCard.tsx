@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './card_sound.module.css'
 import SoundBall from '../ball_sound/SoundBall'
 import { SoundT } from '../../types/types';
@@ -6,28 +6,59 @@ import { SoundT } from '../../types/types';
 type SoundCardProps = {
   sound: SoundT;
   unSelectSound: (soundId: number) => void;
+  isPlaying: Boolean;
 }
 
-const SoundCard = ({sound, unSelectSound}: SoundCardProps): JSX.Element => {
+const volumeConverter = (int: number | undefined) => {
+  switch (int) {
+    case 0: 
+      return 0;
+    case 1:
+      return 0.2;
+    case 2:
+      return 0.4; 
+    case 3:
+      return 0.6;
+    case 4:
+      return 0.8;
+    case 5:
+      return 1;
+    default:
+      return 0.6;
+  }
+}
+
+const SoundCard = ({sound, unSelectSound, isPlaying}: SoundCardProps): JSX.Element => {
+  const [volume, setVolume] = useState( sound.customVolume || sound.volume || 3)
   const audio = new Audio(sound.srcSound)
-  audio.volume = 0.2
+  const audioRef = useRef(audio)
+  audioRef.current.volume = volumeConverter(volume)
+
+
+
   useEffect(() => {
-    setTimeout(() => audio.play(), 1000)
+    if (isPlaying) {
+      setTimeout(() => audio.play(), 1000)
+    } else {
+      audio.pause()
+    }
     return () => {audio.pause()}
-  }, [])
+  }, [isPlaying])
 
   const testVolumeUp = () => {
-    if (audio.volume < 0.9) {
-      audio.volume = audio.volume + 0.2
+    if (audioRef.current.volume < 0.9) {
+      audioRef.current.volume = audioRef.current.volume + 0.2
+      setVolume(volume+1)
     }
   }
 
   const testVolumeDown = () => {
-    if (audio.volume > 0.1) {
-      audio.volume = audio.volume - 0.2
+    if (audioRef.current.volume >= 0.2) {
+      audioRef.current.volume = audioRef.current.volume - 0.2
+      setVolume(volume-1)
     }
   }
-  
+
   return (
     <div className={styles.card}>
       <div className={styles.sound_ball}>
@@ -35,12 +66,12 @@ const SoundCard = ({sound, unSelectSound}: SoundCardProps): JSX.Element => {
       </div>
       <div className={styles.volume}>
         <div className={styles.volume_display}>
-          <span className={styles.volume_point}></span>
-          <span className={styles.volume_point}></span>
-          <span className={styles.volume_point}></span>
-          <span className={styles.volume_point}></span>
-          <span className={styles.volume_point}></span>
-          <span className={styles.volume_number}>{sound.customVolume?sound.customVolume:sound.volume}</span>
+          <span className={`${styles.volume_point} ${volume >= 1? styles.volume_active : ''}`}></span>
+          <span className={`${styles.volume_point} ${volume >= 2? styles.volume_active : ''}`}></span>
+          <span className={`${styles.volume_point} ${volume >= 3? styles.volume_active : ''}`}></span>
+          <span className={`${styles.volume_point} ${volume >= 4? styles.volume_active : ''}`}></span>
+          <span className={`${styles.volume_point} ${volume === 5? styles.volume_active : ''}`}></span>
+          <span className={styles.volume_number}>{volume}</span>
           <div className={styles.volume_btn}>
             <img className={styles.volume_up} src="./images/arrow_btn.png" alt="volume_up" onClick={testVolumeUp}/>
             <img className={styles.volume_down} src="./images/arrow_btn.png" alt="volume_down" onClick={testVolumeDown}/>
@@ -48,7 +79,6 @@ const SoundCard = ({sound, unSelectSound}: SoundCardProps): JSX.Element => {
         </div>
       </div>
       <button className={styles.remove_btn} onClick={() => unSelectSound(sound.id!)}>X</button>
-      {/* <audio src='https://airsounds-media.s3.us-east-2.amazonaws.com/sounds/train.mp3' autoPlay={isPlaying}></audio> */}
     </div>
   )
 }

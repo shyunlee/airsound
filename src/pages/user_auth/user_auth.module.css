@@ -12,9 +12,10 @@
 
 .frame {
   width: 50%;
+  min-width: 50em;
   height: 60%;
   display:flex;
-  position:relative
+  position:relative;
 }
 
 .login_container,
