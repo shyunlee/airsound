@@ -20,7 +20,7 @@ const ScreenList = ({
     <div className={styles.screen_list}>
       {videosList.map((item) => {
         return consoleVideo?.id === item.id ?
-        <div className={styles.screen_ball_container} key={item.id} onClick={() => unSelectVideo(item.id!)}>
+        <div className={`${styles.screen_ball_container} ${styles.screen_ball_selected}`} key={item.id} onClick={() => unSelectVideo(item.id!)}>
           <ScreenBall video={item} />
         </div>
         :

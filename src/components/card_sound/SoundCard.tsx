@@ -7,6 +7,7 @@ type SoundCardProps = {
   sound: SoundT;
   unSelectSound: (soundId: number) => void;
   isPlaying: Boolean;
+  controlVolume: (customVolume: number, soundId?: number) => void;
 }
 
 const volumeConverter = (int: number | undefined) => {
@@ -28,22 +29,31 @@ const volumeConverter = (int: number | undefined) => {
   }
 }
 
-const SoundCard = ({sound, unSelectSound, isPlaying}: SoundCardProps): JSX.Element => {
+const SoundCard = ({sound, unSelectSound, isPlaying, controlVolume}: SoundCardProps): JSX.Element => {
   const [volume, setVolume] = useState( sound.customVolume || sound.volume || 3)
   const audio = new Audio(sound.srcSound)
   const audioRef = useRef(audio)
   audioRef.current.volume = volumeConverter(volume)
+  
 
 
 
   useEffect(() => {
     if (isPlaying) {
-      setTimeout(() => audio.play(), 1000)
+      setTimeout(() => audioRef.current.play(), 1000)
     } else {
-      audio.pause()
+      audioRef.current.pause()
     }
-    return () => {audio.pause()}
+    return () => {audioRef.current.pause()}
   }, [isPlaying])
+
+  useEffect(() => {
+    controlVolume(volume, sound?.id)
+  }, [volume])
+
+  useEffect(() => {
+    setVolume(prev => sound.customVolume || prev)
+  }, [sound])
 
   const testVolumeUp = () => {
     if (audioRef.current.volume < 0.9) {

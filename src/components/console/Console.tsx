@@ -4,7 +4,7 @@ import SoundCard from '../card_sound/SoundCard';
 import ScreenBall from '../ball_screen/ScreenBall'
 import { MoodOnConsoleT, VideoT, SoundT } from '../../types/types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faPlay, faPause, faUndoAlt, faSave, faTrashRestoreAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faPlay, faPause, faUndoAlt, faSave, faExpand, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 
 type ConsoleProps = {
@@ -16,6 +16,9 @@ type ConsoleProps = {
   unSelectMood: () => void;
   unSelectVideo: () => void;
   unSelectSound: (soundId: number) => void;
+  controlVolume: (customeVolume: number, soundId?: number) => void;
+  onMoodReset: (moodId?: number) => void;
+  getFullScreen: () => void;
 }
 
 const Console = ({
@@ -26,7 +29,10 @@ const Console = ({
   selectedMoodInfo,
   unSelectMood,
   unSelectVideo,
-  unSelectSound
+  unSelectSound,
+  controlVolume,
+  onMoodReset,
+  getFullScreen
 }: ConsoleProps): JSX.Element => {
   const [toggleDisplay, setToggleDisplay] = useState(false)
   const [isPlaying, setIsPlaying] = useState(true)
@@ -65,6 +71,11 @@ const Console = ({
     setIsPlaying(!isPlaying)
   }
 
+  const offMoodFromConsole = () => {
+    unSelectMood()
+    setIsPlaying(true)
+  }
+
   return (
     <>
     {
@@ -75,23 +86,26 @@ const Console = ({
         <div className={styles.console_contoller_box}>
           <button className={`${styles.console_control_btn} ${styles.play}`} onClick={pauseOrPlayAllSounds}>
             {
-              isPlaying? <FontAwesomeIcon icon={faPause}/> : <FontAwesomeIcon icon={faPlay}/>
+              isPlaying? <FontAwesomeIcon title='Pause' icon={faPause}/> : <FontAwesomeIcon title='Play' icon={faPlay}/>
             }
           </button>
-          <button className={`${styles.console_control_btn} ${styles.save}`} onClick={saveMoodOnConsole}>
-            <FontAwesomeIcon icon={faSave} />
+          <button className={`${styles.console_control_btn} ${styles.full}`} onClick={getFullScreen}>
+            <FontAwesomeIcon title='Full Screen' icon={faExpand}/>
           </button>
-          <button className={`${styles.console_control_btn} ${styles.delete}`} onClick={unSelectMood}>
-            <FontAwesomeIcon icon={faTrashRestoreAlt} />
+          <button className={`${styles.console_control_btn} ${styles.save}`} onClick={saveMoodOnConsole}>
+            <FontAwesomeIcon title='Save' icon={faSave} />
+          </button>
+          <button className={`${styles.console_control_btn} ${styles.clear}`} onClick={offMoodFromConsole}>
+            <FontAwesomeIcon title='Clear' icon={faMinus} />
           </button>
           {
             selectedMoodInfo.id ? 
             <>
-              <button className={`${styles.console_control_btn} ${styles.reset}`}>
-                <FontAwesomeIcon icon={faUndoAlt} />
+              <button className={`${styles.console_control_btn} ${styles.reset}`} onClick={() => onMoodReset(selectedMoodInfo.id)}>
+                <FontAwesomeIcon title='Reset' icon={faUndoAlt} />
               </button>
               <button className={`${styles.console_control_btn} ${styles.delete}`} onClick={deleteMoodOnConsole}>
-                <FontAwesomeIcon icon={faTrashAlt} />
+                <FontAwesomeIcon title='Delete' icon={faTrashAlt} />
               </button>
             </>
             :
@@ -127,7 +141,9 @@ const Console = ({
         </div>
         }
           <div>
-            {selectedSoundsList.map(item => <SoundCard key={item.id} sound={item} unSelectSound={unSelectSound} isPlaying={isPlaying}/>)}
+            {selectedSoundsList.map(item => 
+              (<SoundCard key={item.id} sound={item} unSelectSound={unSelectSound} isPlaying={isPlaying} controlVolume={controlVolume}/>)
+            )}
           </div>
         </div>
           <div className={`${styles.console_toggle} ${toggleDisplay?styles.closed:''}`}>

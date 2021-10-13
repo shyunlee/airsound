@@ -32,10 +32,10 @@ const MoodCard = ({mood, selectMood, onDelete}: MoodCardProps): JSX.Element => {
           </div>
         </div>
         <div className={styles.mood_control}>
-          <button className={`${styles.mood_control_btn} ${styles.play}`} onClick={() => selectMood(mood)}>
+          <button title='Play Mood' className={`${styles.mood_control_btn} ${styles.play}`} onClick={() => selectMood(mood)}>
             <FontAwesomeIcon icon={faPlay}/>
           </button>
-          <button className={`${styles.mood_control_btn} ${styles.delete}`} onClick={() => onDelete(mood.id!)}>
+          <button title='Delete Mood' className={`${styles.mood_control_btn} ${styles.delete}`} onClick={() => onDelete(mood.id!)}>
             <FontAwesomeIcon icon={faTrashAlt}/>
           </button>
         </div>

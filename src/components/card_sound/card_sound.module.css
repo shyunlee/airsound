@@ -1,18 +1,24 @@
-@value defaultColor, lightBlack from '../../common/colors.css';
+@value defaultColor, lightBlack, cardBackground, cardBoxShadow, hoverBoxShadow, defaultRed from '../../common/colors.css';
 
 .card {
   display:flex;
   align-items: center;
-  border: 1px solid defaultColor;
   border-radius: 10px;
   padding: 0.3em 1em;
   margin-bottom: 0.5em;
-  background-color: lightBlack;
+  background-color: cardBackground;
+  box-shadow: cardBoxShadow;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: hoverBoxShadow;
+  transition: all 0.05s ease;
 }
 
 .sound_ball {
   width:3.5em;
-  background-color: whitesmoke;
+  background-color: defaultColor;
   border-radius: 50%;
   padding:0.5em;
   margin: 0.5em 0;
@@ -28,7 +34,7 @@
 .volume_point {
   width: 0.7em;
   height: 0.7em;
-  border: 2px solid defaultColor;
+  border: 1.5px solid defaultColor;
   border-radius: 50%;
   margin:0 0.3em;
 }
@@ -42,6 +48,7 @@
   margin-left: 0.5em;
   margin-right: 0.5em;
   font-size: 1.5rem;
+  width: 0.5em;
 }
 
 .volume_btn {
@@ -62,6 +69,24 @@
   cursor: pointer;
 }
 
+.volume_up:hover {
+  transform: scale(1.25);
+}
+
+.volume_down:hover {
+  transform: scale(1.25) rotate(180deg);
+}
+
+.volume_up:active {
+  transform: scale(0.9);
+  transition: all 0.2s linear;
+}
+
+.volume_down:active {
+  transform: scale(0.9) rotate(180deg);
+  transition: all 0.2s linear;
+}
+
 .remove_btn {
   border: 0;
   outline: 0;
@@ -69,4 +94,12 @@
   font-size: 1.2rem;
   color: defaultColor;
   cursor: pointer;
+}
+
+.remove_btn:hover {
+  color: defaultRed;
+}
+
+.remove_btn:active {
+  transform: scale(0.8);
 }

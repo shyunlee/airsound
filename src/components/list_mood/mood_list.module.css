@@ -1,14 +1,15 @@
-@value defaultColor, lightBlack, containerBack from '../../common/colors.css';
+@value defaultColor, lightBlack, containerBack, containerBoxShadow, buttonBackground, barColor from '../../common/colors.css';
 
 .mood_list_container {
   height: 100%;
   width: 100%;
   display:flex;
   overflow: hidden;
+  align-items: center;
 }
 
 .mood_list {
-  height: 100%;
+  height: 98%;
   width: 100%;
   padding: 0 1em;
   background-color: containerBack;
@@ -16,6 +17,7 @@
   overflow-x:hidden;
   border-radius: 0.5em;
   transition: transform 0.5s linear;
+  box-shadow: containerBoxShadow;
 }
 
 .mood_list.closed {
@@ -24,7 +26,7 @@
 
 .mood_list_bar {
   outline:0;
-  background-color: defaultColor;
+  background-color: barColor;
   border-radius: 15px;
   width:0.25em;
   height: 20em;
@@ -73,6 +75,6 @@
 }
 
 .mood_list::-webkit-scrollbar-thumb{
-  background-color: aqua;
+  background-color: buttonBackground;
   border-radius: 5em;
 }

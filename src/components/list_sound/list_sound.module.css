@@ -1,4 +1,4 @@
-@value defaultColor from '../../common/colors.css';
+@value defaultColor, buttonBackground from '../../common/colors.css';
 
 .sound_list {
   height: 100%;
@@ -16,10 +16,14 @@
 .ball_sound_container{
   transition: all 0.1s linear;
   width:3.5em;
-  background-color: whitesmoke;
+  background-color: defaultColor;
   border-radius:50%;
   padding:0.5em;
   margin:0.5em 0;
+}
+
+.ball_sound_selected {
+  background-color: thistle;
 }
 
 .ball_sound_container:hover {
@@ -35,6 +39,6 @@
 }
 
 .sound_list::-webkit-scrollbar-thumb{
-  background-color: aqua;
+  background-color: buttonBackground;
   border-radius: 5em;
 }

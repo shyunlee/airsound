@@ -25,7 +25,7 @@ const SoundList = ({
             <SoundBall sound={item} />
           </div>
         ) : (
-          <div className={styles.ball_sound_container} key={item.id} onClick={() => unSelectSound(item.id!)}>
+          <div className={`${styles.ball_sound_container} ${styles.ball_sound_selected}`} key={item.id} onClick={() => unSelectSound(item.id!)}>
             <SoundBall sound={item} />
           </div>
         );

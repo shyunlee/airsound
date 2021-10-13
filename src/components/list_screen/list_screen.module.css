@@ -1,4 +1,4 @@
-@value containerBack from '../../common/colors.css';
+@value containerBack, defaultColor, buttonBackground from '../../common/colors.css';
 
 .screen_list {
   height:100%;
@@ -18,10 +18,14 @@
   transition: all 0.1s linear;
   width: 3.5em;
   min-width: 3.5em;
-  background-color: whitesmoke;
+  background-color: defaultColor;
   border-radius: 50%;
   padding: 0.2em;
   margin: 0 0.5em;
+}
+
+.screen_ball_selected {
+  background-color: thistle;
 }
 
 .screen_ball_container:hover {
@@ -37,6 +41,6 @@
 }
 
 .screen_list::-webkit-scrollbar-thumb{
-  background-color: aqua;
+  background-color: buttonBackground;
   border-radius: 5em;
 }

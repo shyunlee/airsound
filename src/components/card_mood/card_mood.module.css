@@ -1,41 +1,52 @@
-@value defaultColor, lightBlack from '../../common/colors.css';
+@value defaultColor, cardBackground, cardBoxShadow, hoverBoxShadow, activeClick, buttonBoxShadow, buttonBackground, hoverButtonShadow, defaultRed, defaultPink from '../../common/colors.css';
 
 .mood_card {
-  display:flex;
-  padding-left:0.5em;
+  display: flex;
+  padding-left: 0.5em;
   padding-right: 0.5em;
-  border: 1px solid defaultColor;
   margin: 1em 0;
   border-radius: 10px;
-  background-color: lightBlack;
+  background-color: cardBackground;
+  box-shadow: cardBoxShadow;
   width: 100%;
   min-width: 15em;
 }
 
+.mood_card:hover {
+  transform: scale(1.02);
+  box-shadow: hoverBoxShadow;
+  transition: all 0.1s linear;
+}
+
+.mood_card:hover .mood_control_btn {
+  transform: scale(1.03);
+  transition: all 0.1s linear;
+}
+
 .mood_screen_container {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding-left: 0.5em;
 }
 
 .mood_screen {
-  background-color: whitesmoke;
+  background-color: defaultColor;
   width: 4em;
   border-radius: 50%;
   padding: 0.2em;
 }
 
 .mood_info {
-  display:flex;
+  display: flex;
   flex-direction: column;
   width: 100%;
-  padding:0.3em 0;
+  padding: 0.3em 0;
   overflow: hidden;
 }
 
 .mood_sounds_container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   width: 100%;
   min-width: 8em;
@@ -43,49 +54,62 @@
 }
 
 .mood_title {
-  color:whitesmoke;
+  color: whitesmoke;
   text-align: right;
   width: 90%;
-  padding:0.2em 0.5em;
+  padding: 0.2em 0.5em;
   margin-bottom: 0.5em;
   border-bottom: 2px solid defaultColor;
   margin-left: 1em;
+  letter-spacing: 0.1em;
 }
 
 .mood_sounds {
-  display:flex;
+  display: flex;
   /* width: 100%; */
   justify-content: flex-start;
-  padding-left:1.2em;
+  padding-left: 1.2em;
   overflow: hidden;
-
 }
 
 .sound_ball {
   width: 2em;
   border-radius: 50%;
-  background-color: whitesmoke;
-  padding:0.2em;
-  margin:0 0.3em;
+  background-color: defaultColor;
+  padding: 0.2em;
+  margin: 0 0.3em;
 }
 
 .mood_control {
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: flex-end;
-  padding:0.5em 0;
+  padding: 0.5em 0;
 }
 
 .mood_control_btn {
-  margin:0 0.3em;
-  margin-top:1em;
+  margin: 0 0.3em;
+  margin-top: 1em;
   border-radius: 20%;
   width: 1.8em;
   height: 1.8em;
-  background-color: thistle;
-  border:0;
+  background-color: buttonBackground;
+  color: defaultColor;
+  box-shadow: buttonBoxShadow;
+  border: 0;
   cursor: pointer;
-  padding:0;
-  color: li0.9htBlack;
-  font-size:0.9rem;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.mood_control_btn:active {
+  box-shadow: activeClick;
+}
+
+.play:hover {
+  color: defaultPink;
+}
+
+.delete:hover {
+  color: defaultRed;
 }

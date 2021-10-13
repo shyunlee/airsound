@@ -15,6 +15,7 @@ type AppProps = {
   mediaService: MediaService;
 }
 
+
 const App = ({authService, mediaService}: AppProps): JSX.Element => {
   const [isLogin, setIsLogin] = useState(false)
   const [user, setUser] = useState<UserT | undefined>(undefined)

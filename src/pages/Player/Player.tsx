@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import Header from "../../components/header/Header";
 import Console from "../../components/console/Console";
 import MoodList from "../../components/list_mood/MoodList";
@@ -33,6 +34,7 @@ const Player = ({
   const [consoleVideo, setConsoleVideo] = useState<VideoT>();
   const [consoleSounds, setConsoleSounds] = useState<SoundT[]>([]);
   const [consoleMoodInfo, setConsoleMoodInfo] = useState<MoodOnConsoleT>({title:'', timer: 3});
+  const handle = useFullScreenHandle();
 
   useEffect(() => {
     mediaService.getAllMedia().then((result) => {
@@ -67,13 +69,30 @@ const Player = ({
     }))
   };
 
+  const onMoodReset = (moodId?: number) => {
+    const currentMood = moods.filter(item => item.id === moodId )[0]
+    console.log(currentMood)
+    onMood(currentMood)
+  }
+
   const offMood = () => {
     setConsoleVideo(undefined)
     setConsoleSounds([])
     setConsoleMoodInfo({title:'', timer: 3})
   };
 
-  const controlVolume = (soundId: number, customVol: number) => {};
+  const controlVolume = (customVolume: number, soundId?: number) => {
+    const volumeChanged = consoleSounds.map(item => {
+      if (item.id === soundId) {
+        return {
+          ...item,
+          customVolume
+        }
+      }
+      return item
+    })
+    setConsoleSounds(volumeChanged)
+  };
 
   const toggleMute = () => {};
 
@@ -92,7 +111,6 @@ const Player = ({
         customVolume: sound.customVolume!,
       })),
     };
-    console.log(requestData)
     let response;
     if (requestData.id) {
       response = await mediaService.editMood(requestData)
@@ -131,12 +149,21 @@ const Player = ({
     }
   };
 
+  const getFullScreen = () => {
+    handle.enter()
+  }
+
   return (
     <div className={styles.player}>
       {
         consoleVideo ?
-        <video className={styles.video_frame} src={consoleVideo?.srcVideo} autoPlay loop muted></video>
-        : ''
+        <FullScreen handle={handle}>
+          <video className={styles.video_frame} src={consoleVideo?.srcVideo} autoPlay loop muted></video>
+        </FullScreen>
+        : 
+        <FullScreen handle={handle}>
+          <video className={styles.video_frame} src='https://airsounds-media.s3.us-east-2.amazonaws.com/videos/player_background.mp4' autoPlay loop muted></video>
+        </FullScreen>
       }
       <div className={styles.player_control}>
         <Header isLogin={isLogin} userInfo={userInfo} onLogout={onLogout} />
@@ -156,6 +183,9 @@ const Player = ({
                     unSelectMood={offMood}
                     unSelectVideo={offVideo}
                     unSelectSound={offSound}
+                    controlVolume={controlVolume}
+                    onMoodReset={onMoodReset}
+                    getFullScreen={getFullScreen}
                   />
               </section>
               <section className={styles.center_bottom}>
