@@ -8,9 +8,11 @@ type HeaderProps = {
   isLogin: Boolean;
   userInfo: UserT | undefined;
   onLogout: () => void;
+  toggleProfileModal: () => void;
+  toggleSettingModal: () => void;
 }
 
-const Header = ({isLogin, userInfo, onLogout}: HeaderProps): JSX.Element => {
+const Header = ({isLogin, userInfo, onLogout, toggleProfileModal, toggleSettingModal}: HeaderProps): JSX.Element => {
   const history = useHistory()
 
   const clickLogin = () => {
@@ -30,7 +32,7 @@ const Header = ({isLogin, userInfo, onLogout}: HeaderProps): JSX.Element => {
       <div className={styles.control_container}>
         {
           isLogin ?
-            <Avatar srcImage={userInfo?.srcImage} email={userInfo?.email} username={userInfo?.username} onLogout={onLogout}/>
+            <Avatar srcImage={userInfo?.srcImage} email={userInfo?.email} username={userInfo?.username} onLogout={onLogout} toggleProfileModal={toggleProfileModal} toggleSettingModal={toggleSettingModal}/>
           :
           <>
             <button className={styles.control_login} onClick={clickLogin}>Login</button>

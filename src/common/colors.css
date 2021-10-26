@@ -1,5 +1,5 @@
-@value lightBlack: #2E2E2E;
-@value defaultColor: rgba(255, 255, 255, 0.7);
+@value lightBlack: rgba(100, 100, 100, 1);
+@value defaultColor: rgba(255, 255, 255, 1);
 @value containerBack: rgba(255, 255, 255, 0.1);
 @value containerBoxShadow: rgba(100, 100, 100, 0.3) 0px 1px 2px 0px, rgba(100, 100, 100, 0.15) 0px 2px 6px 2px;
 @value cardBackground: rgba(50, 50, 50, 0.6);
@@ -11,3 +11,4 @@
 @value defaultRed: #DF2E2E; 
 @value defaultPink: #CD5D7D;
 @value barColor: rgba(255, 255, 255, 0.5);
+@value pointColor: rgba(180, 225, 221, 0.8);

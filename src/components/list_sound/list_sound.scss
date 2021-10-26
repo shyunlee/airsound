@@ -1,0 +1,67 @@
+$defaultColor: rgba(255, 255, 255, 1);
+$lightBlack: rgba(100, 100, 100, 1);
+
+@mixin on-circle($item-count, $circle-size, $item-size) {  
+  position: relative;
+  width:  $circle-size;
+  height: $circle-size;
+  border-radius: 50%;
+  padding: 0; 
+  list-style: none;
+  
+  > * {
+    display: block;
+    position: absolute;
+    top:  50%; 
+    left: 50%;
+    margin: -($item-size / 2);
+    width:  $item-size;
+    height: $item-size;
+  
+    $angle: (360 / $item-count);
+    $rot: 0;
+
+    @for $i from 0 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
+      }
+
+      $rot: $rot + $angle;
+    }
+  }
+}
+
+.sound-list-container {
+  @include on-circle($item-count: 25, $circle-size: 55em, $item-size: 4.5em); 
+  margin: 0em auto 0;
+  margin-left: 15em;
+  // border: solid 5px tomato;
+  img { 
+    display: block; 
+    max-width: 100%; 
+    filter: grayscale(100%);
+    transition: .15s;
+    
+    &:hover,
+    &:active {
+      filter: grayscale(0);
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.ball_sound_container{
+  transition: all 0.1s linear;
+  background-color: $lightBlack;
+  border-radius:50%;
+  border: 2px solid $defaultColor;
+  overflow: hidden;
+  padding: 0.3em;
+}
+
+.ball_sound_selected {
+  background-color: rgb(183, 246, 249);
+  width: 5em;
+  height: 5em;
+}

@@ -1,4 +1,4 @@
-@value defaultColor, buttonBackground from '../../common/colors.css';
+@value defaultColor, buttonBackground, lightBlack from '../../common/colors.css';
 
 .sound_list {
   height: 100%;
@@ -16,10 +16,11 @@
 .ball_sound_container{
   transition: all 0.1s linear;
   width:3.5em;
-  background-color: defaultColor;
+  background-color: lightBlack;
   border-radius:50%;
   padding:0.5em;
   margin:0.5em 0;
+  border: 2px solid defaultColor;
 }
 
 .ball_sound_selected {

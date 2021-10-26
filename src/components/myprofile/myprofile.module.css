@@ -1,0 +1,139 @@
+@value defaultColor, defaultRed, lightBlack, pointColor from '../../common/colors.css';
+
+.myprofile_modal {
+  position: absolute;
+  background-color: defaultColor;
+  width: 27em;
+  height: 40em;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 3;
+}
+
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1.3em;
+  padding-right: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
+  align-items: flex-start;
+}
+
+.modal_header span {
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  margin-top: 0.3em;
+  color: lightBlack;
+}
+
+.modal_header button {
+  border: 0;
+  background: none;
+  color: defaultRed;
+  font-size: 1.2rem;
+}
+
+.modal_header button:hover {
+  transform: scale(1.1);
+  transition: all 0.1s linear;
+  cursor: pointer;
+}
+
+.modal_header button:active {
+  transform: scale(0.9);
+  transition: all 0.1s linear;
+}
+
+.myprofile_image {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar_image {
+  width: 9.5em;
+  height: 9.5em;
+  border-radius: 50%;
+}
+
+.image_input {
+  
+}
+
+.user_info {
+  width: 100%;
+  height: 100%;
+}
+
+.edit_form {
+  display:flex;
+  flex-direction: column;
+  padding: 1.2em 4em ;
+  /* padding-bottom: 1em; */
+  align-items: center;
+  margin-top: 0.5em;
+}
+
+.label {
+  color: darkgray;
+  width:100%;
+  margin:0.5em 0em;
+  margin-bottom: 0;
+  font-size:0.7rem;
+}
+
+
+.input {
+  /* padding-top:0.2em; */
+  padding-left:0.5em;
+  width:100%;
+  border: 0;
+  outline-color: pointColor;
+  font-size: 1.1rem;
+  color:lightBlack;
+}
+
+.input:focus {
+  background-color: rgba(250, 250, 250, 0.8);
+}
+
+.label::after {
+  content: '';
+  display: block;
+  width: 90%;
+  height:1px;
+  background-color: lightgray;
+  margin-bottom:0.8em;
+}
+
+.empty_space {
+  width: 100%;
+  height: 8em;
+}
+
+.alert {
+  color: defaultRed;
+  font-size: 0.9rem;
+  letter-spacing:0.025em;
+  height: 1em;
+  white-space: nowrap;
+}
+
+.submit_button {
+  margin-top:1em;
+  padding:0.3em 1em;
+  font-weight: bold;
+  border: 0;
+  border-radius: 0.3em;
+  background-color: pointColor;
+  color: lightBlack;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+}

@@ -5,6 +5,7 @@ import Console from "../../components/console/Console";
 import MoodList from "../../components/list_mood/MoodList";
 import ScreenList from "../../components/list_screen/ScreenList";
 import SoundList from "../../components/list_sound/SoundList";
+import MyProfile from '../../components/myprofile/MyProfile';
 import styles from "./player.module.css";
 import {
   MoodT,
@@ -12,6 +13,7 @@ import {
   UserT,
   VideoT,
   MoodOnConsoleT,
+  EditUserRequestT,
 } from "../../types/types";
 import MediaService from "../../service/media";
 
@@ -20,6 +22,7 @@ type PlayerProps = {
   userInfo: UserT | undefined;
   onLogout: () => void;
   mediaService: MediaService;
+  onEditUserInfo: (edit:EditUserRequestT) => Promise<Boolean>;
 };
 
 const Player = ({
@@ -27,6 +30,7 @@ const Player = ({
   userInfo,
   onLogout,
   mediaService,
+  onEditUserInfo,
 }: PlayerProps): JSX.Element => {
   const [sounds, setSounds] = useState<SoundT[]>([]);
   const [videos, setVideos] = useState<VideoT[]>([]);
@@ -34,6 +38,13 @@ const Player = ({
   const [consoleVideo, setConsoleVideo] = useState<VideoT>();
   const [consoleSounds, setConsoleSounds] = useState<SoundT[]>([]);
   const [consoleMoodInfo, setConsoleMoodInfo] = useState<MoodOnConsoleT>({title:'', timer: 3});
+  const [isProfileOn, setIsProfileOn] = useState(false)
+  const [isSettingOn, setIsSettingOn] = useState(false)
+  const [videoDegree, setVideoDegree] = useState(0)
+  const [soundDegree, setSoundDegree] = useState(0)
+  const [isScreenDisplayOn, setIsScreenDisplayOn] = useState(true)
+  const [isSoundDisplayOn, setIsSoundDisplayOn] = useState(true)
+
   const handle = useFullScreenHandle();
 
   useEffect(() => {
@@ -43,6 +54,11 @@ const Player = ({
       setMoods(result.moods);
     });
   }, [mediaService, isLogin]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {setIsScreenDisplayOn(false)}, 3000)
+  //   setTimeout(() => setIsSoundDisplayOn(false), 3000)
+  // }, [])
 
   const onSound = (selectedSound: SoundT) => {
     setConsoleSounds(prev => prev.concat(selectedSound))
@@ -93,8 +109,6 @@ const Player = ({
     })
     setConsoleSounds(volumeChanged)
   };
-
-  const toggleMute = () => {};
 
   const saveOrEditMood = async (
     consoleMoodInfo: MoodOnConsoleT,
@@ -153,6 +167,47 @@ const Player = ({
     handle.enter()
   }
 
+  const closeModal = () => {
+    setIsProfileOn(false)
+    setIsSettingOn(false)
+  }
+
+  const toggleProfileModal = () => {
+    setIsProfileOn(!isProfileOn)
+  }
+
+  const toggleSettingModal = () => {
+    setIsSettingOn(!isSettingOn)
+  }
+
+  const ScreenWheelEvent = (event: any) => {
+    const factor = event.nativeEvent
+    if (factor.wheelDelta >= 0) {
+      setVideoDegree(prev => prev - 1)
+    }
+    else {
+      setVideoDegree(prev => prev + 1)
+    }
+  }
+
+  const soundWheelEvent = (event: any) => {
+    const factor = event.nativeEvent
+    if (factor.wheelDelta >= 0) {
+      setSoundDegree(prev => prev + 1)
+    }
+    else {
+      setSoundDegree(prev => prev - 1)
+    }
+  }
+
+  const toggleScreenDisplay = () => {
+    // setIsScreenDisplayOn(!isScreenDisplayOn)
+  }
+
+  const toggleSoundDisplay = () => {
+    // setIsSoundDisplayOn(!isSoundDisplayOn)
+  }
+
   return (
     <div className={styles.player}>
       {
@@ -165,8 +220,21 @@ const Player = ({
           <video className={styles.video_frame} src='https://airsounds-media.s3.us-east-2.amazonaws.com/videos/player_background.mp4' autoPlay loop muted></video>
         </FullScreen>
       }
+      
+      {isProfileOn || isSettingOn ?
+        <>
+          <div className={styles.modal_overlay} onClick={closeModal}></div>
+          {
+            isProfileOn ?
+            <MyProfile userInfo={userInfo} onEditUserInfo={onEditUserInfo} toggleProfileModal={toggleProfileModal}/> 
+          :
+            <div>SETTING</div>
+          }
+        </> :
+        ''
+        }
       <div className={styles.player_control}>
-        <Header isLogin={isLogin} userInfo={userInfo} onLogout={onLogout} />
+        <Header isLogin={isLogin} userInfo={userInfo} onLogout={onLogout} toggleProfileModal={toggleProfileModal} toggleSettingModal={toggleSettingModal}/>
         <main className={styles.main}>
           <section className={styles.main_left}>
             <MoodList moodsList={moods} onDelete={deleteMood}  selectMood={onMood}/>
@@ -188,13 +256,17 @@ const Player = ({
                     getFullScreen={getFullScreen}
                   />
               </section>
-              <section className={styles.center_bottom}>
-                <ScreenList videosList={videos} selectVideo={onVideo} unSelectVideo={offVideo} consoleVideo={consoleVideo?consoleVideo:undefined}/>
+              <section className={styles.center_bottom} onWheel={ScreenWheelEvent} onMouseEnter={toggleScreenDisplay} onMouseLeave={toggleScreenDisplay}>
+                <div className={`${styles.toggle_display} ${isScreenDisplayOn? '' : styles.screen_off}`}>
+                  <ScreenList videosList={videos} selectVideo={onVideo} unSelectVideo={offVideo} consoleVideo={consoleVideo?consoleVideo:undefined} videoDegree={videoDegree}/>
+                </div>
               </section>
             </section>
           </section>
-          <section className={styles.main_right}>
-            <SoundList soundsList={sounds} selectSound={onSound} unSelectSound={offSound} consoleSounds={consoleSounds}/>
+          <section className={styles.main_right} onWheel={soundWheelEvent} onMouseEnter={toggleSoundDisplay} onMouseLeave={toggleSoundDisplay}>
+            <div className={`${styles.toggle_display} ${isSoundDisplayOn? '' : styles.sound_off}`}>
+              <SoundList soundsList={sounds} selectSound={onSound} unSelectSound={offSound} consoleSounds={consoleSounds} soundDegree={soundDegree}/>
+            </div>
           </section>
         </main>
       </div>

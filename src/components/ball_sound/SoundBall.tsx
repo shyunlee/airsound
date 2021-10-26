@@ -4,12 +4,14 @@ import styles from './sound_ball.module.css';
 
 type SoundBallProps = {
   sound: SoundT;
+  soundDegree?: number;
 }
 
-const SoundBall = ({sound}: SoundBallProps): JSX.Element => {
-  // console.log(sound.srcImage)
+const SoundBall = ({sound, soundDegree}: SoundBallProps): JSX.Element => {
+
+  const soundRotateDeg = -1 * soundDegree!
   return (
-    <div className={styles.sound_ball}>
+    <div className={styles.sound_ball} style={{transform: `rotate(${soundRotateDeg}deg)`}}>
       <img className={styles.sound_ball_img} src={sound.srcImage} alt={sound.title} />
     </div>
   )

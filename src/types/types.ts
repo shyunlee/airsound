@@ -4,6 +4,7 @@ export type UserT = {
   email?: string;
   password?: string;
   srcImage?: string | undefined;
+  authProvider? : string;
 }
 
 export type UserSignupT = UserT & {

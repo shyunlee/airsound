@@ -97,14 +97,14 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
           <LandingPage isLogin={isLogin}/>
         </Route>
         <Route path='/player'>
-          <Player isLogin={isLogin} userInfo={user} onLogout={logout} mediaService={mediaService}/>
+          <Player isLogin={isLogin} userInfo={user} onLogout={logout} mediaService={mediaService} onEditUserInfo={eidtUserInfo}/>
         </Route>
         <Route path='/login'>
           <UserAuth isLogin={isLogin} onLogin={login} onSignup={signup} onAuthLogin={authLogin}/>
         </Route>
-        <Route path='/mypage'>
+        {/* <Route path='/mypage'>
           <MyPage userInfo={user} onEditUserInfo={eidtUserInfo}/>
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );

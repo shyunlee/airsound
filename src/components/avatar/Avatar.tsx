@@ -7,9 +7,11 @@ type AvatarProps = {
   email?:string;
   username?: string;
   onLogout: () => void;
+  toggleProfileModal: () => void;
+  toggleSettingModal: () => void;
 }
 
-const Avatar = ({srcImage, email, username, onLogout}: AvatarProps): JSX.Element => {
+const Avatar = ({srcImage, email, username, onLogout, toggleProfileModal, toggleSettingModal}: AvatarProps): JSX.Element => {
   return (
     <div className={styles.avatar}>
       <img className={styles.avatar_img} src={srcImage || './images/christmas-tree.png' } alt="" />
@@ -25,8 +27,8 @@ const Avatar = ({srcImage, email, username, onLogout}: AvatarProps): JSX.Element
             </div>
           </div>
           <div className={styles.avatar_drop_bottom}>
-            <div className={`${styles.avatar_drop_menu} ${styles.myprofile}`}>My Profile</div>
-            <div className={`${styles.avatar_drop_menu} ${styles.setting}`}>Setting</div>
+            <div className={`${styles.avatar_drop_menu} ${styles.myprofile}`} onClick={toggleProfileModal}>My Profile</div>
+            <div className={`${styles.avatar_drop_menu} ${styles.setting}`} onClick={toggleSettingModal}>Setting</div>
             <div className={`${styles.avatar_drop_menu} ${styles.logout}`} onClick={onLogout}>Logout</div>
           </div>
         </div>
