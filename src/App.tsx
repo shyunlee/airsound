@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './app.module.css';
 import LandingPage from './pages/landing/LandingPage';
@@ -13,10 +13,10 @@ import MediaService from './service/media';
 type AppProps = {
   authService: AuthService;
   mediaService: MediaService;
+  FileInput: (props: any) => JSX.Element
 }
 
-
-const App = ({authService, mediaService}: AppProps): JSX.Element => {
+const App = ({authService, mediaService, FileInput}: AppProps): JSX.Element => {
   const [isLogin, setIsLogin] = useState(false)
   const [user, setUser] = useState<UserT | undefined>(undefined)
 
@@ -97,7 +97,7 @@ const App = ({authService, mediaService}: AppProps): JSX.Element => {
           <LandingPage isLogin={isLogin}/>
         </Route>
         <Route path='/player'>
-          <Player isLogin={isLogin} userInfo={user} onLogout={logout} mediaService={mediaService} onEditUserInfo={eidtUserInfo}/>
+          <Player isLogin={isLogin} userInfo={user} onLogout={logout} mediaService={mediaService} onEditUserInfo={eidtUserInfo} FileInput={FileInput}/>
         </Route>
         <Route path='/login'>
           <UserAuth isLogin={isLogin} onLogin={login} onSignup={signup} onAuthLogin={authLogin}/>

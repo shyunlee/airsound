@@ -1,0 +1,62 @@
+@value makerSpinner, makerSmokeWhite, makerWhite, makerBlack, makerLightBlack, makerPink, makerLightPink from '../../common/colors.css';
+
+
+.container {
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  border:0;
+  border-bottom:1px solid makerBlack;
+  background-color: makerSmokeWhite;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image_btn {
+  width:100%;
+  height:100%;
+  outline: 0;
+  border:0;
+  color: makerLightBlack;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+}
+
+.image_btn:hover {
+  opacity: 0.8;
+}
+
+.grey {
+  background-color: makerSmokeWhite;
+}
+
+.pink {
+  background-color: makerLightPink;
+
+}
+
+.file_input {
+  display:none;
+}
+
+.loading {
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid makerSpinner;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  border-top: 2.7px solid makerPink;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg)
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }

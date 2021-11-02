@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import Header from "../../components/header/Header";
 import Console from "../../components/console/Console";
@@ -23,6 +23,7 @@ type PlayerProps = {
   onLogout: () => void;
   mediaService: MediaService;
   onEditUserInfo: (edit:EditUserRequestT) => Promise<Boolean>;
+  FileInput: (props: any) => JSX.Element
 };
 
 const Player = ({
@@ -31,6 +32,7 @@ const Player = ({
   onLogout,
   mediaService,
   onEditUserInfo,
+  FileInput,
 }: PlayerProps): JSX.Element => {
   const [sounds, setSounds] = useState<SoundT[]>([]);
   const [videos, setVideos] = useState<VideoT[]>([]);
@@ -56,8 +58,8 @@ const Player = ({
   }, [mediaService, isLogin]);
 
   // useEffect(() => {
-  //   setTimeout(() => {setIsScreenDisplayOn(false)}, 3000)
-  //   setTimeout(() => setIsSoundDisplayOn(false), 3000)
+  //   setTimeout(() => {setIsScreenDisplayOn(false)}, 1000)
+  //   setTimeout(() => setIsSoundDisplayOn(false), 1000)
   // }, [])
 
   const onSound = (selectedSound: SoundT) => {
@@ -226,7 +228,7 @@ const Player = ({
           <div className={styles.modal_overlay} onClick={closeModal}></div>
           {
             isProfileOn ?
-            <MyProfile userInfo={userInfo} onEditUserInfo={onEditUserInfo} toggleProfileModal={toggleProfileModal}/> 
+            <MyProfile userInfo={userInfo} onEditUserInfo={onEditUserInfo} toggleProfileModal={toggleProfileModal} FileInput={FileInput}/> 
           :
             <div>SETTING</div>
           }

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { UserT, EditUserRequestT } from '../../types/types';
 import styles from './myprofile.module.css';
+const defaultProfileImage = './images/default_profile.png' 
 
 type MyProfileProps = {
   userInfo: UserT | undefined;
   onEditUserInfo: (edit:EditUserRequestT) => Promise<Boolean>;
   toggleProfileModal: () => void;
+  FileInput: (props: any) => JSX.Element
 }
 
-const MyProfile = ({userInfo, onEditUserInfo, toggleProfileModal}: MyProfileProps): JSX.Element => {
+const MyProfile = ({userInfo, onEditUserInfo, toggleProfileModal, FileInput}: MyProfileProps): JSX.Element => {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [currentPassword, setCurrentPassword] = useState('')
@@ -21,7 +23,7 @@ const MyProfile = ({userInfo, onEditUserInfo, toggleProfileModal}: MyProfileProp
     if (userInfo) {
       setEmail(userInfo.email || '')
       setUsername(userInfo.username || '')
-      setSrcImage(userInfo.srcImage || './images/default_profile.png')
+      setSrcImage(userInfo.srcImage || defaultProfileImage)
     }
   }, [userInfo])
 
@@ -58,6 +60,7 @@ const MyProfile = ({userInfo, onEditUserInfo, toggleProfileModal}: MyProfileProp
       username,
       newPassword: password,
       currentPassword,
+      srcImage: srcImage === defaultProfileImage ?  '' : srcImage
     }
 
     const result = await onEditUserInfo(editRequestForm)
@@ -69,6 +72,10 @@ const MyProfile = ({userInfo, onEditUserInfo, toggleProfileModal}: MyProfileProp
     }
   }
 
+  const onImageChange = (file: any) => {
+
+  }
+
   return (
     <div className={styles.myprofile_modal}>
       <div className={styles.modal_header}>
@@ -76,8 +83,8 @@ const MyProfile = ({userInfo, onEditUserInfo, toggleProfileModal}: MyProfileProp
         <button onClick={toggleProfileModal}>X</button>
       </div>
       <div className={styles.myprofile_image}>
-        <img className={styles.avatar_image}src={srcImage} alt="Avatar" />
-        <input className={styles.image_input} type="file" />
+        <img className={styles.avatar_image} src={srcImage} alt="Avatar" />
+        <FileInput />
       </div>
       <div className={styles.user_info}>
         <form className={styles.edit_form} onSubmit={onSaveChanges}>
