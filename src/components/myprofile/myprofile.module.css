@@ -53,16 +53,27 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 4em;
 }
 
 .avatar_image {
-  width: 9.5em;
-  height: 9.5em;
+  width: 9.3em;
+  height: 9.3em;
   border-radius: 50%;
 }
 
-.image_input {
-  
+.remove_button {
+  background: none;
+  border: none;
+  margin: 0.3em 0;
+  color: lightBlack;
+  letter-spacing: 0.025em;
+}
+
+.remove_button:hover {
+  cursor: pointer;
+  color: defaultRed;
+  transform: scale(1.02)
 }
 
 .user_info {
@@ -73,10 +84,9 @@
 .edit_form {
   display:flex;
   flex-direction: column;
-  padding: 1.2em 4em ;
+  padding: 1em 4em ;
   /* padding-bottom: 1em; */
   align-items: center;
-  margin-top: 0.5em;
 }
 
 .label {
@@ -113,7 +123,7 @@
 
 .empty_space {
   width: 100%;
-  height: 8em;
+  height: 7em;
 }
 
 .alert {
@@ -125,7 +135,7 @@
 }
 
 .submit_button {
-  margin-top:1em;
+  margin:0.4em 0;
   padding:0.3em 1em;
   font-weight: bold;
   border: 0;

@@ -13,7 +13,7 @@ import MediaService from './service/media';
 type AppProps = {
   authService: AuthService;
   mediaService: MediaService;
-  FileInput: (props: any) => JSX.Element
+  FileInput: (props: any) => JSX.Element;
 }
 
 const App = ({authService, mediaService, FileInput}: AppProps): JSX.Element => {
@@ -97,7 +97,14 @@ const App = ({authService, mediaService, FileInput}: AppProps): JSX.Element => {
           <LandingPage isLogin={isLogin}/>
         </Route>
         <Route path='/player'>
-          <Player isLogin={isLogin} userInfo={user} onLogout={logout} mediaService={mediaService} onEditUserInfo={eidtUserInfo} FileInput={FileInput}/>
+          <Player 
+            isLogin={isLogin} 
+            userInfo={user} 
+            onLogout={logout} 
+            mediaService={mediaService} 
+            onEditUserInfo={eidtUserInfo} 
+            FileInput={FileInput}
+          />
         </Route>
         <Route path='/login'>
           <UserAuth isLogin={isLogin} onLogin={login} onSignup={signup} onAuthLogin={authLogin}/>

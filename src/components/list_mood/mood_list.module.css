@@ -51,7 +51,8 @@
 .toggle_btn {
   height: 0.8em;
   transition: all 0.1s linear;
-  transform: rotate(-90deg)
+  transform: rotate(-90deg);
+  cursor: pointer;
 }
 
 .toggle_btn.closed {

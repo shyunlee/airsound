@@ -1,4 +1,4 @@
-@value makerSpinner, makerSmokeWhite, makerWhite, makerBlack, makerLightBlack, makerPink, makerLightPink from '../../common/colors.css';
+@value lightBlack, pointColor, defaultPink from '../../common/colors.css';
 
 
 .container {
@@ -6,11 +6,10 @@
   height: 100%;
   outline: 0;
   border:0;
-  border-bottom:1px solid makerBlack;
-  background-color: makerSmokeWhite;
   display:flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0.3em;
 }
 
 .image_btn {
@@ -18,24 +17,18 @@
   height:100%;
   outline: 0;
   border:0;
-  color: makerLightBlack;
+  color: lightBlack;
   font-size: 0.8rem;
   font-weight: bold;
   letter-spacing: 0.07em;
   cursor: pointer;
+  padding: 0.3em 0;
+  border-radius: 10em;
+  background-color: pointColor;
 }
 
 .image_btn:hover {
   opacity: 0.8;
-}
-
-.grey {
-  background-color: makerSmokeWhite;
-}
-
-.pink {
-  background-color: makerLightPink;
-
 }
 
 .file_input {
@@ -45,10 +38,10 @@
 .loading {
   width: 1.25em;
   height: 1.25em;
-  border: 2px solid makerSpinner;
+  border: 3px solid makerSpinner;
   border-radius: 50%;
   animation: spin 2s linear infinite;
-  border-top: 2.7px solid makerPink;
+  border-top: 3px solid pointColor;
 }
 
 @keyframes spin {

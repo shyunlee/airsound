@@ -23,7 +23,7 @@ type PlayerProps = {
   onLogout: () => void;
   mediaService: MediaService;
   onEditUserInfo: (edit:EditUserRequestT) => Promise<Boolean>;
-  FileInput: (props: any) => JSX.Element
+  FileInput: (props: any) => JSX.Element;
 };
 
 const Player = ({
@@ -61,6 +61,14 @@ const Player = ({
   //   setTimeout(() => {setIsScreenDisplayOn(false)}, 1000)
   //   setTimeout(() => setIsSoundDisplayOn(false), 1000)
   // }, [])
+
+  useEffect(() => {
+    console.log('fixed scroll')
+    document.body.classList.add('fixed-scroll')
+    return () => {
+      document.body.classList.remove('fixed-scroll')
+    }
+  }, [])
 
   const onSound = (selectedSound: SoundT) => {
     setConsoleSounds(prev => prev.concat(selectedSound))

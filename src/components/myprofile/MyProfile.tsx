@@ -72,8 +72,12 @@ const MyProfile = ({userInfo, onEditUserInfo, toggleProfileModal, FileInput}: My
     }
   }
 
-  const onImageChange = (file: any) => {
+  const onImageChange = (fileName: string) => {
+    setSrcImage(fileName)
+  }
 
+  const removeProfileImage = () => {
+    setSrcImage(defaultProfileImage)
   }
 
   return (
@@ -84,7 +88,8 @@ const MyProfile = ({userInfo, onEditUserInfo, toggleProfileModal, FileInput}: My
       </div>
       <div className={styles.myprofile_image}>
         <img className={styles.avatar_image} src={srcImage} alt="Avatar" />
-        <FileInput />
+        <button className={styles.remove_button} onClick={removeProfileImage}>Remove Profile Image</button>
+        <FileInput onFileChange={onImageChange}/>
       </div>
       <div className={styles.user_info}>
         <form className={styles.edit_form} onSubmit={onSaveChanges}>

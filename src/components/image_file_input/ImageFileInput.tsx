@@ -4,11 +4,10 @@ import styles from "./image_file_input.module.css";
 
 type ImageFileInputProps = {
   imageUploader: ImageUploader;
-  fileName: string;
   onFileChange: (file: string) => string;
 }
 
-const ImageFileInput = memo(({ imageUploader, fileName, onFileChange }: ImageFileInputProps) => {
+const ImageFileInput = memo(({ imageUploader, onFileChange }: ImageFileInputProps) => {
   const [loading, setLoading] = useState(false)
   const inputRef: any = useRef();
 
@@ -21,16 +20,16 @@ const ImageFileInput = memo(({ imageUploader, fileName, onFileChange }: ImageFil
     const result = await imageUploader.upload(event.currentTarget.files![0])
     console.log(result)
     setLoading(false)
-    // onFileChange(result)
+    onFileChange(result)
   };
 
   return (
     <div className={styles.container}>
       {!loading && <input
-        className={`${styles.image_btn} ${fileName ? styles.pink : styles.grey}`}
+        className={styles.image_btn}
         type="button"
         name="button"
-        value={fileName || 'No File'}
+        value={'Edit Profile'}
         onClick={onButtonClick}
       />}
       <input
