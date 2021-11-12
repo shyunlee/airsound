@@ -40,7 +40,11 @@ const SoundCard = ({sound, unSelectSound, isPlaying, controlVolume}: SoundCardPr
 
   useEffect(() => {
     if (isPlaying) {
-      setTimeout(() => audioRef.current.play(), 1000)
+      setTimeout(() => {
+        audioRef.current.play()
+        audioRef.current.loop = true
+      }
+      , 1000)
     } else {
       audioRef.current.pause()
     }

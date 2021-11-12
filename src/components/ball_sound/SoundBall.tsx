@@ -11,7 +11,7 @@ const SoundBall = ({sound, soundDegree}: SoundBallProps): JSX.Element => {
 
   const soundRotateDeg = -1 * soundDegree!
   return (
-    <div className={styles.sound_ball} style={{transform: `rotate(${soundRotateDeg}deg)`}}>
+    <div className={styles.sound_ball} style={{transform: `rotate(${soundRotateDeg}deg)`}} title={sound.title}>
       <img className={styles.sound_ball_img} src={sound.srcImage} alt={sound.title} />
     </div>
   )

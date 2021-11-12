@@ -274,7 +274,7 @@ const Player = ({
             </section>
           </section>
           <section className={styles.main_right} onWheel={soundWheelEvent} onMouseEnter={toggleSoundDisplay} onMouseLeave={toggleSoundDisplay}>
-            <div className={`${styles.toggle_display} ${isSoundDisplayOn? '' : styles.sound_off}`}>
+            <div className={`${styles.toggle_display} ${styles.sounds_circle} ${isSoundDisplayOn? '' : styles.sound_off}`}>
               <SoundList soundsList={sounds} selectSound={onSound} unSelectSound={offSound} consoleSounds={consoleSounds} soundDegree={soundDegree}/>
             </div>
           </section>

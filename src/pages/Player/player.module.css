@@ -88,6 +88,11 @@
   transition: all 0.3s linear;
 }
 
+.sounds_circle {
+  padding-left: 15em;
+  transform: translateY(-3em)
+}
+
  .screen_off {
   transform: translateY(12em);
 }
