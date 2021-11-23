@@ -1,6 +1,6 @@
 $defaultColor: rgba(255, 255, 255, 1);
 
-@mixin on-circle($item-count, $circle-size, $item-size) {  
+@mixin on-circle($item-count, $circle-size, $item-size-width, $item-size-height) {  
   position: relative;
   width:  $circle-size;
   height: $circle-size;
@@ -13,16 +13,16 @@ $defaultColor: rgba(255, 255, 255, 1);
     position: absolute;
     top:  50%; 
     left: 50%;
-    margin: -($item-size / 2);
-    width:  $item-size;
-    height: $item-size;
+    margin: -($item-size-width / 2);
+    width:  $item-size-width;
+    height: $item-size-height;
   
     $angle: (360 / $item-count);
     $rot: 0;
 
     @for $i from 1 through $item-count {
       &:nth-of-type(#{$i}) {
-        transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(86deg);
+        transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg);
       }
 
       $rot: $rot + $angle;
@@ -31,13 +31,13 @@ $defaultColor: rgba(255, 255, 255, 1);
 }
 
 .circle-container {
-  @include on-circle($item-count: 20, $circle-size: 50em, $item-size: 4.5em); 
-  margin: 5em auto 0;
+  @include on-circle($item-count: 25, $circle-size: 60em, $item-size-width: 5em, $item-size-height: 7em); 
+  margin: 4em auto 0;
   // border: solid 5px tomato;
   img { 
     display: block; 
     max-width: 100%; 
-    filter: grayscale(100%);
+    filter: grayscale(50%);
     transition: .15s;
     
     &:hover,
@@ -50,17 +50,24 @@ $defaultColor: rgba(255, 255, 255, 1);
 }
 
 .screen_ball_container {
-  display:inline-block;
+  display:inline-flex;
   transition: all 0.1s linear;
-  background-color: $defaultColor;
-  border-radius: 50%;
+  // border:1px solid $defaultColor;
+  border-radius: 10%;
   overflow: hidden;
-  padding: 0.1em;
+  justify-content: center;
+  align-items: center;
+  // padding: 0.1em;
 }
 
-.screen_ball_selected {
+.screen_ball_selected:active {
   background-color:rgb(183, 246, 249);
   // margin: 0em;
-  width: 5em;
-  height: 5em;
+  // width: 6em;
+  // height: 9em;
+}
+
+.screen_ball_selected img {
+  filter: grayscale(0);
+  // transform: scale(1.2)
 }

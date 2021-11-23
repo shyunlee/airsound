@@ -31,10 +31,16 @@
 }
 
 .mood_screen {
-  background-color: defaultColor;
+  /* background-color: defaultColor; */
   width: 4em;
   height: 4em;
   border-radius: 50%;
+  overflow:hidden;
+  filter: grayscale(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid defaultColor; */
 }
 
 .mood_info {

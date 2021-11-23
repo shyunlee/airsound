@@ -91,9 +91,15 @@
   background-color: defaultColor;
   border-radius: 50%;
   width: 4.5em;
+  height: 4.5em;
   position: relative;
   transition: opacity 0.5s linear;
   z-index:1;
+  overflow:hidden;
+  filter: grayscale(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .clear_screen_btn {
@@ -103,13 +109,12 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 0.5px solid defaultColor;
+  border:none;
   position: absolute;
   top:0.2em;
   right:0.15em;
   color:defaultColor;
   outline: none;
-  /* border: none; */
   font-size: 0.75rem;
   background: none;
   cursor: pointer;
@@ -127,7 +132,7 @@
 .selected_screen:hover .clear_screen_btn {
   visibility: visible;
   opacity: 1;
-  z-index:1;
+  z-index:2;
   color: defaultRed;
 }
 

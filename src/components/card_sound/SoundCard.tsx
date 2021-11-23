@@ -44,7 +44,7 @@ const SoundCard = ({sound, unSelectSound, isPlaying, controlVolume}: SoundCardPr
         audioRef.current.play()
         audioRef.current.loop = true
       }
-      , 1000)
+      , 0)
     } else {
       audioRef.current.pause()
     }
