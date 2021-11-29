@@ -27,6 +27,7 @@ class ImageUploader {
     const key = result.data.Key
 
     const response = await axios.put(uploadUrl, file)
+    if (response.status === 200) return bucketUrl+key
 
     // let reader = new FileReader()
     // reader.onload = async (e) => {
@@ -35,8 +36,8 @@ class ImageUploader {
     //   const result = await axios.put(uploadUrl, imageData)
     // }
     // reader.readAsDataURL(file)
-
-    return bucketUrl+key
+    return 'failed'
+    
   }  
 }
 

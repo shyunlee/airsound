@@ -18,9 +18,10 @@ const ImageFileInput = memo(({ imageUploader, onFileChange }: ImageFileInputProp
   const onChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoading(true)
     const result = await imageUploader.upload(event.currentTarget.files![0])
-    console.log(result)
     setLoading(false)
-    onFileChange(result)
+    if (result !== 'failed') {
+      onFileChange(result)
+    }
   };
 
   return (

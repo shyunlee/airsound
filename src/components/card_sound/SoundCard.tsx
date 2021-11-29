@@ -45,10 +45,11 @@ const SoundCard = ({sound, unSelectSound, isPlaying, controlVolume}: SoundCardPr
         audioRef.current.loop = true
       }
       , 0)
+      // const observer = new IntersectionObserver()
     } else {
       audioRef.current.pause()
     }
-    return () => {audioRef.current.pause()}
+    return () => audioRef.current.pause()
   }, [isPlaying])
 
   useEffect(() => {

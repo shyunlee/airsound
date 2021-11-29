@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './app.module.css';
 import LandingPage from './pages/landing/LandingPage';
 import Player from './pages/Player/Player'
-import MyPage from './pages/mypage/MyPage';
 import UserAuth from './pages/user_auth/UserAuth';
 import { EditUserRequestT, UserLoginT, UserSignupT, UserT } from './types/types';
 import  AuthService  from './service/auth';

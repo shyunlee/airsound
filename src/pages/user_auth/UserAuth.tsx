@@ -24,10 +24,10 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
     if (isLogin === true) {
       history.push('/player')
     }
-  }, [isLogin])
+  }, [isLogin, history])
 
   useEffect(() => {
-    console.log('useeffect')
+    console.log('userAuth')
     const url = new URL(window.location.href)
     const authCode = url.searchParams.get('code')
     if (authCode?.length === 20) {
@@ -35,7 +35,8 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
     } else if (authCode?.length === 73) {
       onAuthLogin('google', authCode)
     }
-  }, [])
+    return () => {}
+  },[onAuthLogin])
 
   const toggle = () => {
     setEmail('')
