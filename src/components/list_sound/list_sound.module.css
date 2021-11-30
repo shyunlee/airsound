@@ -1,0 +1,45 @@
+@value defaultColor, buttonBackground, lightBlack from '../../common/colors.css';
+
+.sound_list {
+  height: 100%;
+  width: 100%;
+  display:flex;
+  overflow-y:scroll;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-end;
+  padding-right:1.5em;
+  /* padding-top:5em; */
+  /* display:none; */
+}
+
+.ball_sound_container{
+  transition: all 0.1s linear;
+  width:3.5em;
+  background-color: lightBlack;
+  border-radius:50%;
+  padding:0.5em;
+  margin:0.5em 0;
+  border: 2px solid defaultColor;
+}
+
+.ball_sound_selected {
+  background-color: thistle;
+}
+
+.ball_sound_container:hover {
+  transform: scale(1.2);
+  margin:1em 0;
+  cursor:pointer;
+}
+
+.sound_list::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  border-radius: 1em;
+}
+
+.sound_list::-webkit-scrollbar-thumb{
+  background-color: buttonBackground;
+  border-radius: 5em;
+}

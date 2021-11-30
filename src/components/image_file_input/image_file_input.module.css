@@ -1,0 +1,55 @@
+@value lightBlack, pointColor, defaultPink from '../../common/colors.css';
+
+
+.container {
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  border:0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.3em;
+}
+
+.image_btn {
+  width:100%;
+  height:100%;
+  outline: 0;
+  border:0;
+  color: lightBlack;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  padding: 0.3em 0;
+  border-radius: 10em;
+  background-color: pointColor;
+}
+
+.image_btn:hover {
+  opacity: 0.8;
+}
+
+.file_input {
+  display:none;
+}
+
+.loading {
+  width: 1.25em;
+  height: 1.25em;
+  border: 3px solid makerSpinner;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  border-top: 3px solid pointColor;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg)
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }

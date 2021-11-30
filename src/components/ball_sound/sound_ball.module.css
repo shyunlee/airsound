@@ -1,0 +1,10 @@
+@value defaultColor from '../../common/colors.css';
+
+.sound_ball {
+  width:100%;
+}
+
+.sound_ball_img {
+  width:100%;
+  padding:0.5em;
+}

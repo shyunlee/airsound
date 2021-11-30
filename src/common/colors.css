@@ -1,0 +1,14 @@
+@value lightBlack: rgba(100, 100, 100, 1);
+@value defaultColor: rgba(220, 220, 220, 1);
+@value containerBack: rgba(255, 255, 255, 0.1);
+@value containerBoxShadow: rgba(100, 100, 100, 0.3) 0px 1px 2px 0px, rgba(100, 100, 100, 0.15) 0px 2px 6px 2px;
+@value cardBackground: rgba(50, 50, 50, 0.6);
+@value cardBoxShadow: rgba(0, 0, 0, 0.25) 1px 1px 0.5em, rgba(0, 0, 0, 0.25) 1px 1px 0.5em, rgba(150, 150, 150, 0.1) -0.5px -0.5px 0px 0.5px inset, rgba(150, 150, 150, 0.1) 0px 0px 0px 0.5px inset;
+@value hoverBoxShadow: rgba(0, 0, 0, 0.25) 5px 10px 1em, rgba(50, 50, 50, 0.25) -5px 5px 1em;
+@value buttonBackground: rgba(180, 225, 221, 0.7);
+@value buttonBoxShadow: rgba(0, 0, 0, 0.25) 1px -1px 0.1em inset, rgba(0, 0, 0, 0.25) -1px -1px 0.1em inset;
+@value activeClick: rgba(100, 100, 100, 0.25) -2px -2px 5px, rgba(100, 100, 100, 0.25) 1px 1px 0.5em, rgba(150, 150, 150, 0.1) -0.5px -0.5px 0px 2px inset;
+@value defaultRed: #DF2E2E; 
+@value defaultPink: #CD5D7D;
+@value barColor: rgba(255, 255, 255, 0.5);
+@value pointColor: rgba(180, 225, 221, 0.8);

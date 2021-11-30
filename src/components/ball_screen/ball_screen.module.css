@@ -1,0 +1,10 @@
+.screen_ball {
+  width: 100%;
+}
+
+.screen_ball_img {
+  width:100%;
+  border-radius: 10%;
+  /* padding:0.9em; */
+  /* border-radius: 10%; */
+}

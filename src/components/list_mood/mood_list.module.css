@@ -1,0 +1,81 @@
+@value defaultColor, lightBlack, containerBack, containerBoxShadow, buttonBackground, barColor from '../../common/colors.css';
+
+.mood_list_container {
+  height: 100%;
+  width: 100%;
+  display:flex;
+  overflow: hidden;
+  align-items: center;
+}
+
+.mood_list {
+  height: 98%;
+  width: 100%;
+  padding: 0 1em;
+  background-color: containerBack;
+  overflow-y: auto;
+  overflow-x:hidden;
+  border-radius: 0.5em;
+  transition: transform 0.5s linear;
+  box-shadow: containerBoxShadow;
+}
+
+.mood_list.closed {
+  transform: translateX(-100%)
+}
+
+.mood_list_bar {
+  outline:0;
+  background-color: barColor;
+  border-radius: 15px;
+  width:0.25em;
+  height: 20em;
+  margin-left: 0.5em;
+  margin-right: 0.3em;
+}
+
+.mood_list_toggle {
+  display: flex;
+  margin-left:0.2em;
+  align-items: center;
+  transition: transform 0.5s linear;
+
+}
+
+.mood_list_toggle.closed {
+  /* transform: translateX(-850%) */
+  transform: translateX(-20em)
+  
+}
+
+.toggle_btn {
+  height: 0.8em;
+  transition: all 0.1s linear;
+  transform: rotate(-90deg);
+  cursor: pointer;
+}
+
+.toggle_btn.closed {
+  height: 0.8em;
+  transition: all 0.2s linear;
+  transform: rotate(90deg)
+}
+
+.toggle_btn:hover {
+  transform: rotate(-90deg) scale(1.3)
+}
+
+.toggle_btn.closed:hover {
+  transform: rotate(90deg) scale(1.3);
+}
+
+.mood_list::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  border-radius: 1em;
+}
+
+.mood_list::-webkit-scrollbar-thumb{
+  background-color: buttonBackground;
+  border-radius: 5em;
+}
