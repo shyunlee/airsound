@@ -10,6 +10,7 @@ import ImageFileInput from './components/image_file_input/ImageFileInput';
 import ImageUploader from './service/imageUploader';
 
 const baseURL = process.env.REACT_APP_BASE_URL
+// const baseURL = 'http://localhost:8080'
 
 const httpClient = new HttpClient(baseURL)
 const authService = new AuthService(httpClient)
