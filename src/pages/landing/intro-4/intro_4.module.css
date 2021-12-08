@@ -1,0 +1,42 @@
+.intro4_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  padding: 10em 8em;
+  justify-content: space-between;
+}
+
+.intro4_text {
+  color:rgb(247, 234, 131);
+  letter-spacing: 0.2em;
+  font-size: 1.5rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro4_media {
+  width: 55em;
+  display:flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: headphone 7s linear infinite;
+}
+
+.intro4_media img {
+  width: 100%;
+}
+
+@keyframes headphone {
+  0% {
+    transform: translateY(-2em)
+  }
+
+  50% {
+    transform: translateY(0)
+  }
+
+  100% {
+    transform: translateY(-2em)
+  }
+}

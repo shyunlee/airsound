@@ -23,7 +23,7 @@ const Intro_1 = ({isLogin}: Intro1Props): JSX.Element => {
       <div className={styles.overlay}></div>
       <div className={styles.intro_contents}>
         <section className={styles.intro_logo}>
-          logo
+          <img className={styles.intro_logo} src="./images/wrapsounds_logo.png" alt="logo" />
         </section>
         <section className={styles.intro_main}>
           <div className={styles.intro_center}>

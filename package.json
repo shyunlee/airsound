@@ -1,5 +1,5 @@
 {
-  "name": "airsound_client",
+  "name": "wrapsounds_client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

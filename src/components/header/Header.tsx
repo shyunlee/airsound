@@ -26,7 +26,7 @@ const Header = ({isLogin, userInfo, onLogout, toggleProfileModal, toggleSettingM
   return (
     <header className={styles.header}>
       <div className={styles.logo} onClick={clickLogo}>
-        <img className={styles.logo_img} src="./images/christmas-tree.png" alt="logo" />
+        <img className={styles.logo_img} src="./images/wrapsounds_logo.png" alt="logo" />
       </div>
       <div className={styles.title}>Wrap Sounds</div>
       <div className={styles.control_container}>

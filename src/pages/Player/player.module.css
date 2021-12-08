@@ -8,8 +8,6 @@
   position: relative;
   /* z-index: 1; */
   overflow: hidden;
-  overscroll-behavior-y: none;
-  overscroll-behavior: none;
 }
 
 .video_frame {

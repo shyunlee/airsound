@@ -23,6 +23,15 @@ $defaultColor: rgba(255, 255, 255, 1);
     @for $i from 1 through $item-count {
       &:nth-of-type(#{$i}) {
         transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg);
+        &.screen_ball_selected {
+          transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.1);
+          &:hover {
+            transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.2);
+          }
+        }
+        &:hover {
+          transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg) scale(1.2);
+        }
       }
 
       $rot: $rot + $angle;

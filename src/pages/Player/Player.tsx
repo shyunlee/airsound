@@ -63,7 +63,6 @@ const Player = ({
   // }, [])
 
   useEffect(() => {
-    console.log('fixed scroll')
     document.body.classList.add('fixed-scroll')
     return () => {
       document.body.classList.remove('fixed-scroll')
@@ -218,6 +217,7 @@ const Player = ({
     // setIsSoundDisplayOn(!isSoundDisplayOn)
   }
 
+
   return (
     <div className={styles.player}>
       {
@@ -264,6 +264,7 @@ const Player = ({
                     controlVolume={controlVolume}
                     onMoodReset={onMoodReset}
                     getFullScreen={getFullScreen}
+                    isLogin={isLogin}
                   />
               </section>
               <section className={styles.center_bottom} onWheel={ScreenWheelEvent} onMouseEnter={toggleScreenDisplay} onMouseLeave={toggleScreenDisplay}>
