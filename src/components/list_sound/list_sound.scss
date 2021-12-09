@@ -23,11 +23,20 @@ $lightBlack: rgba(100, 100, 100, 1);
     @for $i from 0 through $item-count {
       &:nth-of-type(#{$i}) {
         transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
+        &.ball_sound_selected {
+          transform: rotate($rot * 1deg) translate($circle-size / 1.95) rotate($rot * -1deg) scale(1.15);
+          &:hover {
+            transform: rotate($rot * 1deg) translate($circle-size / 1.95) rotate($rot * -1deg) scale(1.2);
+          }
+        }
+        &:hover {
+          transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg) scale(1.2);
+        }
       }
-
       $rot: $rot + $angle;
     }
   }
+  
 }
 
 .sound-list-container {
@@ -61,6 +70,6 @@ $lightBlack: rgba(100, 100, 100, 1);
 
 .ball_sound_selected {
   background-color: rgb(66, 116, 144);
-  width: 5em;
-  height: 5em;
+  // width: 5em;
+  // height: 5em;
 }

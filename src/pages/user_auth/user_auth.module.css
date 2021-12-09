@@ -7,7 +7,16 @@
   display:flex;
   justify-content: center;
   align-items: center;
-  /* background: url('https://res.cloudinary.com/shyuncloud/image/upload/v1633486723/login_page_yt2xl2.jpg'); */
+  background: url('https://airsounds-media.s3.us-east-2.amazonaws.com/background_auth.png');
+  background-size: contain;
+}
+
+.logo {
+  position: absolute;
+  width: 8em;
+  top: 2em;
+  right: 2em;
+  cursor: pointer;
 }
 
 .frame {
@@ -115,6 +124,16 @@
   cursor: pointer;
   color:lightBlack;
   font-size: 0.9rem;
+  transition: ease 0.1s;
+}
+
+.login_link:hover {
+  transform: scale(1.03);
+  color:rgb(249, 185, 25)
+}
+
+.login_link:active {
+  transform: scale(0.97)
 }
 
 .auth_login {
@@ -185,15 +204,47 @@
   z-index:2;
 }
 
+.banner_button {
+  position: absolute;
+  width: 9em;
+  height: 2em;
+  margin: auto;
+  left: 0; right: 0;
+  bottom:5em;
+  background:none;
+  border: 1px solid rgb(249, 185, 25);
+  border-radius: 5px;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  font-weight: bold;
+  color:rgb(249, 185, 25);
+  cursor: pointer;
+  padding: 0;
+  transition: ease 0.1s;
+  text-shadow: 0.5px 1px rgb(205, 205, 205);
+  box-shadow: 1px 1px 0.5px rgb(170, 170, 170);
+}
+
+.banner_button:hover {
+  transform: scale(1.1);
+  text-shadow: 0.5px 1px rgb(205, 205, 205);
+  border:none;
+  background-color: lightBlack;
+}
+
+.banner_button:active {
+  transform: scale(1.05)
+}
+
 .banner.switch_1 {
   transform: translateX(100%);
-  background-color: whitesmoke;
+  background-color: rgb(89 118 122);;
   transition: all 0.7s linear;
 }
 
 .banner.switch_2 {
   transform: translateX(0%);
-  background-color: lightBlack;
+  background-color: rgb(91 141 196);
   transition: all 0.7s linear;
 }
 

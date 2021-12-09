@@ -19,6 +19,7 @@ type ConsoleProps = {
   controlVolume: (customeVolume: number, soundId?: number) => void;
   onMoodReset: (moodId?: number) => void;
   getFullScreen: () => void;
+  isLogin: Boolean;
 }
 
 const Console = ({
@@ -32,7 +33,8 @@ const Console = ({
   unSelectSound,
   controlVolume,
   onMoodReset,
-  getFullScreen
+  getFullScreen,
+  isLogin
 }: ConsoleProps): JSX.Element => {
   const [toggleDisplay, setToggleDisplay] = useState(false)
   const [isPlaying, setIsPlaying] = useState(true)
@@ -52,6 +54,9 @@ const Console = ({
   }
 
   const saveMoodOnConsole = async () => {
+    if (!isLogin) {
+      return window.alert('Please login to save your mood')
+    }
     if (selectedVideo === undefined && selectedSoundsList.length === 0) {
       return;
     }

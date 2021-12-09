@@ -15,7 +15,9 @@ import {
   MoodOnConsoleT,
   EditUserRequestT,
 } from "../../types/types";
+import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons'
 import MediaService from "../../service/media";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type PlayerProps = {
   isLogin: Boolean;
@@ -46,6 +48,8 @@ const Player = ({
   const [soundDegree, setSoundDegree] = useState(0)
   const [isScreenDisplayOn, setIsScreenDisplayOn] = useState(true)
   const [isSoundDisplayOn, setIsSoundDisplayOn] = useState(true)
+  const [isScreenLocked, setIsScreenLocked] = useState(true)
+  const [isSoundLocked, setIsSoundLocked] = useState(true)
 
   const handle = useFullScreenHandle();
 
@@ -57,13 +61,7 @@ const Player = ({
     });
   }, [mediaService, isLogin]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {setIsScreenDisplayOn(false)}, 1000)
-  //   setTimeout(() => setIsSoundDisplayOn(false), 1000)
-  // }, [])
-
   useEffect(() => {
-    console.log('fixed scroll')
     document.body.classList.add('fixed-scroll')
     return () => {
       document.body.classList.remove('fixed-scroll')
@@ -211,12 +209,25 @@ const Player = ({
   }
 
   const toggleScreenDisplay = () => {
-    // setIsScreenDisplayOn(!isScreenDisplayOn)
+    if (!isScreenLocked) {
+      setIsScreenDisplayOn(!isScreenDisplayOn)
+    }
   }
 
   const toggleSoundDisplay = () => {
-    // setIsSoundDisplayOn(!isSoundDisplayOn)
+    if (!isSoundLocked) {
+      setIsSoundDisplayOn(!isSoundDisplayOn)
+    }
   }
+
+  const toggleScreenLock = () => {
+    setIsScreenLocked(!isScreenLocked)
+  }
+
+  const toggleSoundLock = () => {
+    setIsSoundLocked(!isSoundLocked)
+  }
+
 
   return (
     <div className={styles.player}>
@@ -264,10 +275,17 @@ const Player = ({
                     controlVolume={controlVolume}
                     onMoodReset={onMoodReset}
                     getFullScreen={getFullScreen}
+                    isLogin={isLogin}
                   />
               </section>
               <section className={styles.center_bottom} onWheel={ScreenWheelEvent} onMouseEnter={toggleScreenDisplay} onMouseLeave={toggleScreenDisplay}>
                 <div className={`${styles.toggle_display} ${isScreenDisplayOn? '' : styles.screen_off}`}>
+                  <div className={styles.toggle_locking}>
+                    {
+                      isScreenLocked ? <FontAwesomeIcon onClick={toggleScreenLock} className={styles.lock_icon} icon={faLock} />
+                      : <FontAwesomeIcon onClick={toggleScreenLock} className={styles.lock_icon} icon={faLockOpen} />
+                    }
+                  </div>
                   <ScreenList videosList={videos} selectVideo={onVideo} unSelectVideo={offVideo} consoleVideo={consoleVideo?consoleVideo:undefined} videoDegree={videoDegree}/>
                 </div>
               </section>
@@ -275,6 +293,12 @@ const Player = ({
           </section>
           <section className={styles.main_right} onWheel={soundWheelEvent} onMouseEnter={toggleSoundDisplay} onMouseLeave={toggleSoundDisplay}>
             <div className={`${styles.toggle_display} ${styles.sounds_circle} ${isSoundDisplayOn? '' : styles.sound_off}`}>
+              <div className={styles.toggle_locking_sounds}>
+                {
+                  isSoundLocked ? <FontAwesomeIcon onClick={toggleSoundLock} className={styles.lock_icon} icon={faLock} />
+                  : <FontAwesomeIcon onClick={toggleSoundLock} className={styles.lock_icon} icon={faLockOpen} />
+                }
+              </div>
               <SoundList soundsList={sounds} selectSound={onSound} unSelectSound={offSound} consoleSounds={consoleSounds} soundDegree={soundDegree}/>
             </div>
           </section>

@@ -23,6 +23,15 @@ $defaultColor: rgba(255, 255, 255, 1);
     @for $i from 1 through $item-count {
       &:nth-of-type(#{$i}) {
         transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg);
+        &.screen_ball_selected {
+          transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.1);
+          &:hover {
+            transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.2);
+          }
+        }
+        &:hover {
+          transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg) scale(1.2);
+        }
       }
 
       $rot: $rot + $angle;
@@ -32,7 +41,7 @@ $defaultColor: rgba(255, 255, 255, 1);
 
 .circle-container {
   @include on-circle($item-count: 25, $circle-size: 60em, $item-size-width: 5em, $item-size-height: 7em); 
-  margin: 4em auto 0;
+  margin: 5em auto 0;
   // border: solid 5px tomato;
   img { 
     display: block; 
