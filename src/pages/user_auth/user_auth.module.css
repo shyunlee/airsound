@@ -212,7 +212,8 @@
   left: 0; right: 0;
   bottom:5em;
   background:none;
-  border: none;
+  border: 1px solid rgb(249, 185, 25);
+  border-radius: 5px;
   font-size: 1rem;
   letter-spacing: 0.12em;
   font-weight: bold;
@@ -220,11 +221,15 @@
   cursor: pointer;
   padding: 0;
   transition: ease 0.1s;
-  text-shadow: 0.5px 0.5px rgb(205, 205, 205);
+  text-shadow: 0.5px 1px rgb(205, 205, 205);
+  box-shadow: 1px 1px 0.5px rgb(170, 170, 170);
 }
 
 .banner_button:hover {
-  transform: scale(1.1)
+  transform: scale(1.1);
+  text-shadow: 0.5px 1px rgb(205, 205, 205);
+  border:none;
+  background-color: lightBlack;
 }
 
 .banner_button:active {

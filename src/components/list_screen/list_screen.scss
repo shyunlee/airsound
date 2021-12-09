@@ -41,7 +41,7 @@ $defaultColor: rgba(255, 255, 255, 1);
 
 .circle-container {
   @include on-circle($item-count: 25, $circle-size: 60em, $item-size-width: 5em, $item-size-height: 7em); 
-  margin: 4em auto 0;
+  margin: 5em auto 0;
   // border: solid 5px tomato;
   img { 
     display: block; 

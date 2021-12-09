@@ -86,9 +86,38 @@
   transition: all 0.3s linear;
 }
 
+.toggle_locking, .toggle_locking_sounds {
+  color: rgb(255 248 182);
+  text-align: center;
+  transform: translateY(-1.2em);
+  font-size: 1.2rem;
+}
+
+.lock_icon {
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 1px white);
+  transition: ease 0.1s;
+}
+
+.lock_icon:hover {
+  transform: scale(1.1);
+}
+
+.lock_icon:active {
+  transform: scale(1);
+  filter:none;
+}
+
 .sounds_circle {
   padding-left: 15em;
-  transform: translateY(-3em)
+  transform: translateY(-3em);
+  /* position:relative; */
+}
+
+.toggle_locking_sounds {
+  position: absolute;
+  left: 7em;
+  top:50%;
 }
 
  .screen_off {
@@ -96,7 +125,7 @@
 }
 
 .sound_off {
-  transform: translateX(12em);
+  transform: translateX(12em) translateY(-3em);
 }
 
 .modal_overlay {

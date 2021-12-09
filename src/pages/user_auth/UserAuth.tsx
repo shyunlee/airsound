@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Fade } from 'react-awesome-reveal'
 import { useHistory } from 'react-router';
 import { UserLoginT, UserSignupT } from '../../types/types';
 import styles from './user_auth.module.css';
@@ -167,7 +168,7 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
           </div>
         </div>
         <div className={`${styles.banner} ${toggleLogin===null?'':!toggleLogin?styles.switch_2:styles.switch_1}`}>
-          <img className={`${styles.login_banner} ${!toggleLogin ? styles.active : ''}`} src="./images/login_banner.png" alt="login" />
+          <Fade delay={200}><img className={`${styles.login_banner} ${!toggleLogin ? styles.active : ''}`} src="./images/login_banner.png" alt="login" /></Fade>
           <img className={`${styles.signup_banner} ${toggleLogin ? styles.active : ''}`} src="./images/signup_banner.png" alt="signup" />
           <button className={styles.banner_button} onClick={moveToPlayer}>Go to Player</button>
         </div>

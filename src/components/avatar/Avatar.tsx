@@ -28,7 +28,7 @@ const Avatar = ({srcImage, email, username, onLogout, toggleProfileModal, toggle
           </div>
           <div className={styles.avatar_drop_bottom}>
             <div className={`${styles.avatar_drop_menu} ${styles.myprofile}`} onClick={toggleProfileModal}>My Profile</div>
-            <div className={`${styles.avatar_drop_menu} ${styles.setting}`} onClick={toggleSettingModal}>Setting</div>
+            {/* <div className={`${styles.avatar_drop_menu} ${styles.setting}`} onClick={toggleSettingModal}>Setting</div> */}
             <div className={`${styles.avatar_drop_menu} ${styles.logout}`} onClick={onLogout}>Logout</div>
           </div>
         </div>
