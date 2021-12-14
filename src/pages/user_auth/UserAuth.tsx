@@ -28,7 +28,6 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
   }, [isLogin, history])
 
   useEffect(() => {
-    console.log('userAuth')
     const url = new URL(window.location.href)
     const authCode = url.searchParams.get('code')
     if (authCode?.length === 20) {
@@ -102,11 +101,11 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
     event.preventDefault()
     const provider = event.currentTarget.name
     if (provider === 'github') {
-      const githubURL = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_AUTH_REDIRECT_URI}`
+      const githubURL = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_AUTH_REDIRECT_URI_DEV}`
       window.location.assign(githubURL)
     } else if (provider === 'google') {
       const googleURL = `https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&access_type=offline&
-      include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=${process.env.REACT_APP_AUTH_REDIRECT_URI}&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}`
+      include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=${process.env.REACT_APP_AUTH_REDIRECT_URI_DEV}&client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}`
       window.location.assign(googleURL)
     }
   }
