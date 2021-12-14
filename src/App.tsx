@@ -20,12 +20,14 @@ const App = ({authService, mediaService, FileInput}: AppProps): JSX.Element => {
   const [user, setUser] = useState<UserT | undefined>(undefined)
 
   useEffect(() => {
-    authService.me().then(res => {
-      if (res.message === 'ok') {
-        setUser(res.data)
-        setIsLogin(true)
-      }
-    })
+    if (user) {
+      authService.me().then(res => {
+        if (res.message === 'ok') {
+          setUser(res.data)
+          setIsLogin(true)
+        }
+      })
+    }
   }, [authService])
 
   const signup = async (user: UserSignupT) => {
