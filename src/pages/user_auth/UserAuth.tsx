@@ -28,7 +28,6 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
   }, [isLogin, history])
 
   useEffect(() => {
-    console.log('userAuth')
     const url = new URL(window.location.href)
     const authCode = url.searchParams.get('code')
     if (authCode?.length === 20) {
@@ -37,7 +36,7 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
       onAuthLogin('google', authCode)
     }
     return () => {}
-  },[onAuthLogin])
+  },[])
 
   const toggle = () => {
     setEmail('')
