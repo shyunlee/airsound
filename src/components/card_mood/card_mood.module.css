@@ -1,4 +1,4 @@
-@value defaultColor, cardBackground, cardBoxShadow, hoverBoxShadow, activeClick, buttonBoxShadow, buttonBackground, hoverButtonShadow, defaultRed, defaultPink from '../../common/colors.css';
+@value defaultColor, dropShadowFilter, lightBlack, cardBackground, cardBoxShadow, hoverBoxShadow, activeClick, buttonBoxShadow, buttonBackground, hoverButtonShadow, defaultRed, defaultPink from '../../common/colors.css';
 
 .mood_card {
   display: flex;
@@ -40,6 +40,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
   /* border: 2px solid defaultColor; */
 }
 
@@ -68,6 +69,7 @@
   border-bottom: 2px solid defaultColor;
   margin-left: 1em;
   letter-spacing: 0.1em;
+  filter: dropShadowFilter;
 }
 
 .mood_sounds {
@@ -76,6 +78,7 @@
   justify-content: flex-start;
   padding-left: 1.2em;
   overflow: hidden;
+  filter: dropShadowFilter;
 }
 
 .sound_ball {
@@ -101,7 +104,7 @@
   width: 1.8em;
   height: 1.8em;
   background-color: buttonBackground;
-  color: defaultColor;
+  color: rgb(81 78 67);
   box-shadow: buttonBoxShadow;
   border: 0;
   cursor: pointer;

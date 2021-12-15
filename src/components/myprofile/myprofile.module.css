@@ -11,6 +11,7 @@
   right: 0;
   margin: auto;
   z-index: 3;
+  border-radius: 10px;
 }
 
 .modal_header {

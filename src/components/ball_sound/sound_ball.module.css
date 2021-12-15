@@ -1,7 +1,8 @@
-@value defaultColor from '../../common/colors.css';
+@value defaultColor, dropShadowFilter from '../../common/colors.css';
 
 .sound_ball {
   width:100%;
+  filter: dropShadowFilter;
 }
 
 .sound_ball_img {

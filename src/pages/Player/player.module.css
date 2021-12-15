@@ -77,7 +77,7 @@
 }
 
 .center_bottom {
-  height: 25%;
+  height: 28%;
   width: 60em;
   /* margin-bottom: 1em; */
 }
@@ -87,7 +87,7 @@
 }
 
 .toggle_locking, .toggle_locking_sounds {
-  color: rgb(255 248 182);
+  color: rgba(180, 225, 221, 1);
   text-align: center;
   transform: translateY(-1.2em);
   font-size: 1.2rem;
@@ -109,7 +109,7 @@
 }
 
 .sounds_circle {
-  padding-left: 15em;
+  padding-left: 16em;
   transform: translateY(-3em);
   /* position:relative; */
 }
@@ -121,7 +121,7 @@
 }
 
  .screen_off {
-  transform: translateY(12em);
+  transform: translateY(13em);
 }
 
 .sound_off {
