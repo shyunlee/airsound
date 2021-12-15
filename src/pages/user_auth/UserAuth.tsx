@@ -36,7 +36,7 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
       onAuthLogin('google', authCode)
     }
     return () => {}
-  },[onAuthLogin])
+  },[])
 
   const toggle = () => {
     setEmail('')
