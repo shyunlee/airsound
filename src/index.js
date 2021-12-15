@@ -9,8 +9,7 @@ import MediaService from './service/media';
 import ImageFileInput from './components/image_file_input/ImageFileInput';
 import ImageUploader from './service/imageUploader';
 
-// const baseURL = process.env.REACT_APP_BASE_URL
-const baseURL = 'https://server.wrapsounds.com'
+const baseURL = process.env.REACT_APP_BASE_URL
 
 const httpClient = new HttpClient(baseURL)
 const authService = new AuthService(httpClient)
