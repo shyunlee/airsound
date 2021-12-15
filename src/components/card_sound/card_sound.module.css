@@ -1,4 +1,4 @@
-@value defaultColor, lightBlack, cardBackground, cardBoxShadow, hoverBoxShadow, defaultRed from '../../common/colors.css';
+@value defaultColor, dropShadowFilter, lightBlack, cardBackground, cardBoxShadow, hoverBoxShadow, defaultRed from '../../common/colors.css';
 
 .card {
   display:flex;
@@ -22,6 +22,7 @@
   border-radius: 50%;
   margin: 0.5em 0;
   border: 1.5px solid whitesmoke;
+  filter: dropShadowFilter;
 }
 
 .volume_display {
@@ -37,10 +38,12 @@
   border: 1.5px solid defaultColor;
   border-radius: 50%;
   margin:0 0.3em;
+  
 }
 
 .volume_point.volume_active {
   background-color: defaultColor;
+  filter: dropShadowFilter;
 }
 
 .volume_number {
@@ -49,12 +52,14 @@
   margin-right: 0.5em;
   font-size: 1.5rem;
   width: 0.5em;
+  filter: dropShadowFilter;
 }
 
 .volume_btn {
   display:flex;
   flex-direction: column;
   justify-content: center;
+  filter: dropShadowFilter;
 }
 
 .volume_up {
@@ -94,6 +99,7 @@
   font-size: 1.2rem;
   color: defaultColor;
   cursor: pointer;
+  filter: dropShadowFilter;
 }
 
 .remove_btn:hover {

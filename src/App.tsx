@@ -61,6 +61,8 @@ const App = ({authService, mediaService, FileInput}: AppProps): JSX.Element => {
       const userInfo = result.data! as UserT
       setUser(userInfo)
       setIsLogin(true)
+    } else {
+      window.alert('login failed')
     }
   }
 

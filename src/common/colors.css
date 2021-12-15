@@ -11,4 +11,5 @@
 @value defaultRed: #DF2E2E; 
 @value defaultPink: #CD5D7D;
 @value barColor: rgba(255, 255, 255, 0.5);
-@value pointColor: rgba(180, 225, 221, 0.8);
+@value pointColor: rgba(180, 225, 221, 1);
+@value dropShadowFilter: drop-shadow(0.9px 0.9px 1px rgb(255, 255, 255));

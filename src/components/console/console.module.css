@@ -1,4 +1,4 @@
-@value defaultColor, containerBack, containerBoxShadow, lightBlack, buttonBackground, defaultRed, barColor, defaultPink, defaultRed from '../../common/colors.css';
+@value defaultColor, dropShadowFilter, containerBack, containerBoxShadow, lightBlack, buttonBackground, defaultRed, barColor, defaultPink, defaultRed from '../../common/colors.css';
 
 .console_container {
   height: 100%;
@@ -61,7 +61,8 @@
   background-color: buttonBackground;
   border:0;
   cursor: pointer;
-  color: defaultColor;
+  color: rgb(81 78 67);
+  filter: dropShadowFilter;
 }
 
 .console_control_btn:hover {
@@ -183,6 +184,7 @@
   justify-content: center;
   align-items: center;
   transition: transform 0.5s linear;
+  filter: dropShadowFilter;
 }
 
 .console_toggle.closed {
