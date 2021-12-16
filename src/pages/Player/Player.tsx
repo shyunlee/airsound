@@ -238,7 +238,7 @@ const Player = ({
         </FullScreen>
         : 
         <FullScreen handle={handle}>
-          <video className={styles.video_frame} src='https://airsounds-media.s3.us-east-2.amazonaws.com/videos/player_background4.mp4' autoPlay loop muted></video>
+          <video className={styles.video_frame} src='https://airsounds-media.s3.us-east-2.amazonaws.com/videos/player_background5.mp4' autoPlay loop muted></video>
         </FullScreen>
       }
       
