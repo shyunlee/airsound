@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { VideoT } from "../../types/types";
 import ScreenBall from "../ball_screen/ScreenBall";
 import './list_screen.scss'

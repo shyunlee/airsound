@@ -73,3 +73,9 @@ $lightBlack: rgba(100, 100, 100, 1);
   // width: 5em;
   // height: 5em;
 }
+
+@media screen and (max-width: 1350px) {
+  .sound-list-container {
+    @include on-circle($item-count: 32, $circle-size: 50em, $item-size: 4em); 
+  }
+}

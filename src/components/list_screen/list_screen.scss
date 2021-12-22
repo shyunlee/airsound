@@ -1,46 +1,122 @@
 $defaultColor: rgba(255, 255, 255, 1);
 
-@mixin on-circle($item-count, $circle-size, $item-size-width, $item-size-height) {  
-  position: relative;
-  width:  $circle-size;
-  height: $circle-size;
-  border-radius: 50%;
-  padding: 0; 
-  list-style: none;
+@mixin on-circle($item-count, $circle-size, $item-size-width, $item-size-height, $circle) {  
+  @if $circle {
+    position: relative;
+    width:  $circle-size;
+    height: $circle-size;
+    border-radius: 50%;
+    padding: 0; 
+    list-style: none;
+    
+    > * {
+      display: block;
+      position: absolute;
+      top:  50%; 
+      left: 50%;
+      margin: -($item-size-width / 2);
+      width:  $item-size-width;
+      height: $item-size-height;
+    
+      $angle: (360 / $item-count);
+      $rot: 0;
   
-  > * {
-    display: block;
-    position: absolute;
-    top:  50%; 
-    left: 50%;
-    margin: -($item-size-width / 2);
-    width:  $item-size-width;
-    height: $item-size-height;
-  
-    $angle: (360 / $item-count);
-    $rot: 0;
-
-    @for $i from 1 through $item-count {
-      &:nth-of-type(#{$i}) {
-        transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg);
-        &.screen_ball_selected {
-          transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.1);
+      @for $i from 1 through $item-count {
+        &:nth-of-type(#{$i}) {
+          transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg);
+          &.screen_ball_selected {
+            transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.1);
+            &:hover {
+              transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.2);
+            }
+          }
           &:hover {
-            transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.2);
+            transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg) scale(1.2);
           }
         }
-        &:hover {
-          transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg) scale(1.2);
-        }
+  
+        $rot: $rot + $angle;
       }
-
-      $rot: $rot + $angle;
     }
-  }
+  } 
+  // @else {
+  //   padding: 0; 
+  //   position: relative;
+  //   width:  $circle-size;
+  //   height: 100%;
+  //   display: flex;
+  //   border-radius: 0;
+  //   > * {
+  //     display: block;
+  //     position:inherit;
+  //     top:  30%; 
+  //     left: 0;
+  //     margin: -($item-size-width / 2);
+  //     width:  $item-size-width;
+  //     height: $item-size-height;
+  //     $angle: 0;
+  //     $rot: 0;
+  //     @for $i from 1 through $item-count {
+  //       &:nth-of-type(#{$i}) {
+  //         // transform: none;
+  //         transform: translateX($i*$item-size-width*1.2);
+  //         &.screen_ball_selected {
+  //           transform: translateX($i*$item-size-width*1.2) scale(1.3);
+  //           &:hover {
+  //             transform: translateX($i*$item-size-width*1.2) scale(1.2);
+  //           }
+  //         }
+  //         &:hover {
+  //           transform: translateX($i*$item-size-width*1.2) scale(1.2);
+  //         }
+  //       }
+  
+  //       $rot: $rot + $angle;
+  //     }
+  //   }
+  // }
+  @else {
+    position: relative;
+    width:  $circle-size;
+    height: $circle-size;
+    border-radius: 50%;
+    padding: 0; 
+    list-style: none;
+    
+    > * {
+      display: block;
+      position: absolute;
+      top:  50%; 
+      left: 50%;
+      margin: -($item-size-width / 2);
+      width:  $item-size-width;
+      height: $item-size-height;
+    
+      $angle: (360 / $item-count);
+      $rot: 0;
+  
+      @for $i from 1 through $item-count {
+        &:nth-of-type(#{$i}) {
+          transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg);
+          &.screen_ball_selected {
+            transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.1);
+            &:hover {
+              transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.2);
+            }
+          }
+          &:hover {
+            transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg) scale(1.2);
+          }
+        }
+  
+        $rot: $rot + $angle;
+      }
+    }
+  } 
 }
 
 .circle-container {
-  @include on-circle($item-count: 25, $circle-size: 60em, $item-size-width: 5em, $item-size-height: 7em); 
+  @include on-circle($item-count: 27, $circle-size: 60em, $item-size-width: 5em, $item-size-height: 7em, $circle: true); 
   margin: 5em auto 0;
   // border: solid 5px tomato;
   img { 
@@ -80,4 +156,22 @@ $defaultColor: rgba(255, 255, 255, 1);
 .screen_ball_selected img {
   filter: grayscale(0);
   // transform: scale(1.2)
+}
+
+@media screen and (max-width: 1650px) {
+  .circle-container {
+    // transform: rotate(0);
+    // overflow: scroll;
+    @include on-circle($item-count: 27, $circle-size: 50em, $item-size-width: 5em, $item-size-height: 7em, $circle: false); 
+    // margin: 5em auto;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .circle-container {
+    // transform: rotate(0);
+    // overflow: scroll;
+    @include on-circle($item-count: 27, $circle-size: 40em, $item-size-width: 4em, $item-size-height: 6em, $circle: false); 
+    // margin: 5em auto;
+  }
 }

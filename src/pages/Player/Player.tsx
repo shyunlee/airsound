@@ -189,16 +189,23 @@ const Player = ({
   }
 
   const ScreenWheelEvent = (event: any) => {
-    const factor = event.nativeEvent
-    if (factor.wheelDelta >= 0) {
-      setVideoDegree(prev => prev - 1)
-    }
-    else {
-      setVideoDegree(prev => prev + 1)
+    if (window.outerWidth < 1024) {
+      setVideoDegree(0)
+    } else {
+      const factor = event.nativeEvent
+      if (factor.wheelDelta >= 0) {
+        setVideoDegree(prev => prev - 1)
+      }
+      else {
+        setVideoDegree(prev => prev + 1)
+      }
     }
   }
 
   const soundWheelEvent = (event: any) => {
+    if (window.outerWidth < 1024) {
+      return;
+    }
     const factor = event.nativeEvent
     if (factor.wheelDelta >= 0) {
       setSoundDegree(prev => prev + 1)
