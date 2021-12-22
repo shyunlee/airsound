@@ -1,5 +1,5 @@
 @value defaultColor, dropShadowFilter, lightBlack, containerBack, containerBoxShadow, buttonBackground, barColor from '../../common/colors.css';
-
+@value laptopMediumMax from '../../common/size.css';
 .mood_list_container {
   height: 100%;
   width: 100%;
@@ -45,7 +45,6 @@
 .mood_list_toggle.closed {
   /* transform: translateX(-850%) */
   transform: translateX(-20em)
-  
 }
 
 .toggle_btn {
@@ -78,4 +77,11 @@
 .mood_list::-webkit-scrollbar-thumb{
   background-color: buttonBackground;
   border-radius: 5em;
+}
+
+@media screen and (max-width: laptopMediumMax) {
+  .mood_list_toggle.closed {
+    /* transform: translateX(-850%) */
+    transform: translateX(-15em)
+  }
 }
