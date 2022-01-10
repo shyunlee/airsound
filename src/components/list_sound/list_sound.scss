@@ -39,11 +39,20 @@ $lightBlack: rgba(100, 100, 100, 1);
   
 }
 
-.sound-list-container {
+.sound-circle-container {
   @include on-circle($item-count: 32, $circle-size: 60em, $item-size: 4.5em); 
   margin: 0em auto 0;
   // margin-left: 15em ;
   // border: solid 5px tomato;
+  .ball_sound_container{
+    transition: all 0.2s linear;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius:50%;
+    border: 2px solid $defaultColor;
+    overflow: hidden;
+    padding: 0.2em;
+  }
+
   img { 
     display: block; 
     max-width: 100%; 
@@ -59,14 +68,20 @@ $lightBlack: rgba(100, 100, 100, 1);
   }
 }
 
-.ball_sound_container{
-  transition: all 0.2s linear;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius:50%;
-  border: 2px solid $defaultColor;
-  overflow: hidden;
-  padding: 0.2em;
+.sound-list-container {
+  .ball_sound_container{
+    transition: all 0.2s linear;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius:50%;
+    border: 2px solid $defaultColor;
+    overflow: hidden;
+    padding: 0.2em;
+    width: 4em;
+    height: 4em;
+    margin-bottom: 0.8em;
+  }
 }
+
 
 .ball_sound_selected {
   background-color: rgb(66, 116, 144);
@@ -74,8 +89,14 @@ $lightBlack: rgba(100, 100, 100, 1);
   // height: 5em;
 }
 
-@media screen and (max-width: 1350px) {
-  .sound-list-container {
-    @include on-circle($item-count: 32, $circle-size: 50em, $item-size: 4em); 
+@media screen and (max-width: 1650px) {
+  .sound-circle-container {
+    @include on-circle($item-count: 32, $circle-size: 55em, $item-size: 4.5em); 
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .sound-circle-container {
+    @include on-circle($item-count: 32, $circle-size: 50em, $item-size: 4.2em); 
   }
 }

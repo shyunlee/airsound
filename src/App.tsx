@@ -18,8 +18,10 @@ type AppProps = {
 const App = ({authService, mediaService, FileInput}: AppProps): JSX.Element => {
   const [isLogin, setIsLogin] = useState(false)
   const [user, setUser] = useState<UserT | undefined>(undefined)
+  const [width, setWidth] = useState<Number | undefined>(undefined)
 
   useEffect(() => {
+    console.log('app- useeffect')
     authService.me().then(res => {
       if (res.message === 'ok') {
         setUser(res.data)
@@ -27,6 +29,14 @@ const App = ({authService, mediaService, FileInput}: AppProps): JSX.Element => {
       }
     })
   }, [authService])
+
+  useEffect(() => {
+    setWidth(window.innerWidth)
+    window.addEventListener('resize', () => setWidth(window.innerWidth))
+    return () => {
+      window.removeEventListener('resize', () => setWidth(window.innerWidth))
+    }
+  }, [])
 
   const signup = async (user: UserSignupT) => {
     const result = await authService.signup(user)
@@ -105,6 +115,7 @@ const App = ({authService, mediaService, FileInput}: AppProps): JSX.Element => {
             mediaService={mediaService} 
             onEditUserInfo={eidtUserInfo} 
             FileInput={FileInput}
+            width={width}
           />
         </Route>
         <Route path='/login'>

@@ -9,6 +9,7 @@ type SoundListProps = {
   selectSound: (sound: SoundT) => void;
   unSelectSound: (soundId: number) => void;
   soundDegree: number;
+  isMobileSize: Boolean;
 };
 
 const SoundList = ({
@@ -17,14 +18,15 @@ const SoundList = ({
   selectSound,
   unSelectSound,
   soundDegree,
+  isMobileSize
 }: SoundListProps): JSX.Element => {
 
   return (
-    <div className='sound-list-container' style={{transform: `rotate(${soundDegree}deg)`}}>
+    <div className={!isMobileSize ? 'sound-circle-container' : 'sound-list-container'} style={!isMobileSize ? {transform: `rotate(${soundDegree}deg)`} : {}}>
       {soundsList.map((item) => {
         return consoleSounds.filter((selected) => selected.id === item.id).length === 0 ? (
           <div className='ball_sound_container' key={item.id} onClick={() => selectSound(item)}>
-            <SoundBall sound={item} soundDegree={soundDegree}/>
+            <SoundBall sound={item} soundDegree={!isMobileSize ? soundDegree : 0}/>
           </div>
         ) : (
           <div className='ball_sound_container ball_sound_selected' key={item.id} onClick={() => unSelectSound(item.id!)}>

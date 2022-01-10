@@ -26,6 +26,7 @@ type PlayerProps = {
   mediaService: MediaService;
   onEditUserInfo: (edit:EditUserRequestT) => Promise<Boolean>;
   FileInput: (props: any) => JSX.Element;
+  width: Number | undefined;
 };
 
 const Player = ({
@@ -35,6 +36,7 @@ const Player = ({
   mediaService,
   onEditUserInfo,
   FileInput,
+  width
 }: PlayerProps): JSX.Element => {
   const [sounds, setSounds] = useState<SoundT[]>([]);
   const [videos, setVideos] = useState<VideoT[]>([]);
@@ -50,6 +52,7 @@ const Player = ({
   const [isSoundDisplayOn, setIsSoundDisplayOn] = useState(true)
   const [isScreenLocked, setIsScreenLocked] = useState(true)
   const [isSoundLocked, setIsSoundLocked] = useState(true)
+  const [isMobileSize, setIsMobileSize] = useState(false)
 
   const handle = useFullScreenHandle();
 
@@ -67,6 +70,14 @@ const Player = ({
       document.body.classList.remove('fixed-scroll')
     }
   }, [])
+
+  useEffect(() => {
+    if (width! < 1250) {
+      setIsMobileSize(true)
+    } else {
+      setIsMobileSize(false)
+    }
+  }, [width])
 
   const onSound = (selectedSound: SoundT) => {
     setConsoleSounds(prev => prev.concat(selectedSound))
@@ -286,27 +297,31 @@ const Player = ({
                   />
               </section>
               <section className={styles.center_bottom} onWheel={ScreenWheelEvent} onMouseEnter={toggleScreenDisplay} onMouseLeave={toggleScreenDisplay}>
-                <div className={`${styles.toggle_display} ${isScreenDisplayOn? '' : styles.screen_off}`}>
+                <div className={isMobileSize ? '' : `${styles.toggle_display} ${isScreenDisplayOn? '' : styles.screen_off}`}>
+                {isMobileSize ? '' : 
                   <div className={styles.toggle_locking}>
                     {
                       isScreenLocked ? <FontAwesomeIcon onClick={toggleScreenLock} className={styles.lock_icon} icon={faLock} />
                       : <FontAwesomeIcon onClick={toggleScreenLock} className={styles.lock_icon} icon={faLockOpen} />
                     }
                   </div>
-                  <ScreenList videosList={videos} selectVideo={onVideo} unSelectVideo={offVideo} consoleVideo={consoleVideo?consoleVideo:undefined} videoDegree={videoDegree}/>
+                }
+                  <ScreenList videosList={videos} selectVideo={onVideo} unSelectVideo={offVideo} consoleVideo={consoleVideo?consoleVideo:undefined} videoDegree={videoDegree} isMobileSize={isMobileSize}/>
                 </div>
               </section>
             </section>
           </section>
           <section className={styles.main_right} onWheel={soundWheelEvent} onMouseEnter={toggleSoundDisplay} onMouseLeave={toggleSoundDisplay}>
-            <div className={`${styles.toggle_display} ${styles.sounds_circle} ${isSoundDisplayOn? '' : styles.sound_off}`}>
-              <div className={styles.toggle_locking_sounds}>
-                {
-                  isSoundLocked ? <FontAwesomeIcon onClick={toggleSoundLock} className={styles.lock_icon} icon={faLock} />
-                  : <FontAwesomeIcon onClick={toggleSoundLock} className={styles.lock_icon} icon={faLockOpen} />
-                }
-              </div>
-              <SoundList soundsList={sounds} selectSound={onSound} unSelectSound={offSound} consoleSounds={consoleSounds} soundDegree={soundDegree}/>
+            <div className={isMobileSize ? '' : `${styles.toggle_display} ${styles.sounds_circle} ${isSoundDisplayOn? '' : styles.sound_off}`}>
+              {isMobileSize ? '' : 
+                <div className={styles.toggle_locking_sounds}>
+                  {
+                    isSoundLocked ? <FontAwesomeIcon onClick={toggleSoundLock} className={styles.lock_icon} icon={faLock} />
+                    : <FontAwesomeIcon onClick={toggleSoundLock} className={styles.lock_icon} icon={faLockOpen} />
+                  }
+                </div>
+              }
+              <SoundList soundsList={sounds} selectSound={onSound} unSelectSound={offSound} consoleSounds={consoleSounds} soundDegree={soundDegree} isMobileSize={isMobileSize}/>
             </div>
           </section>
         </main>

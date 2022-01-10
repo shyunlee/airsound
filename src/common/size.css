@@ -2,3 +2,13 @@
 @value laptopSmallMax: 1450px;
 @value laptopSmallestMax: 1350px;
 @value tabletLargeMax: 1150px;
+
+@value largeWidth: 1650px;
+@value largeHeight: 930px;
+
+@value mediumWidth: 1400px;
+@value mediumHeight: 750px;
+
+@value smallWidth: 1250px;
+
+@value largeTabWidth: 1015px;

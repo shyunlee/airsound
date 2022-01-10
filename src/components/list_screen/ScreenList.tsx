@@ -8,7 +8,8 @@ type ScreenListProps = {
   consoleVideo: VideoT | undefined;
   selectVideo: (video: VideoT) => void;
   unSelectVideo: (videoId: number) => void;
-  videoDegree: number
+  videoDegree: number;
+  isMobileSize: Boolean;
 };
 
 const ScreenList = ({
@@ -16,11 +17,12 @@ const ScreenList = ({
   selectVideo,
   unSelectVideo,
   consoleVideo,
-  videoDegree
+  videoDegree,
+  isMobileSize
 }: ScreenListProps): JSX.Element => {
 
   return (
-    <div className='circle-container' style={{transform: `rotate(${videoDegree}deg)`}}>
+    <div className={isMobileSize? 'screen-list-container' : 'screen-circle-container'} style={!isMobileSize ? {transform: `rotate(${videoDegree}deg)`} : {}}>
       {videosList.map((item) => {
         return consoleVideo?.id === item.id ?
         // <div className={`${styles.screen_ball_container} ${styles.screen_ball_selected}`} key={item.id} onClick={() => unSelectVideo(item.id!)}>

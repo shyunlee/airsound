@@ -1,7 +1,7 @@
 $defaultColor: rgba(255, 255, 255, 1);
 
-@mixin on-circle($item-count, $circle-size, $item-size-width, $item-size-height, $circle) {  
-  @if $circle {
+@mixin on-circle($item-count, $circle-size, $item-size-width, $item-size-height) {  
+
     position: relative;
     width:  $circle-size;
     height: $circle-size;
@@ -38,87 +38,26 @@ $defaultColor: rgba(255, 255, 255, 1);
         $rot: $rot + $angle;
       }
     }
-  } 
-  // @else {
-  //   padding: 0; 
-  //   position: relative;
-  //   width:  $circle-size;
-  //   height: 100%;
-  //   display: flex;
-  //   border-radius: 0;
-  //   > * {
-  //     display: block;
-  //     position:inherit;
-  //     top:  30%; 
-  //     left: 0;
-  //     margin: -($item-size-width / 2);
-  //     width:  $item-size-width;
-  //     height: $item-size-height;
-  //     $angle: 0;
-  //     $rot: 0;
-  //     @for $i from 1 through $item-count {
-  //       &:nth-of-type(#{$i}) {
-  //         // transform: none;
-  //         transform: translateX($i*$item-size-width*1.2);
-  //         &.screen_ball_selected {
-  //           transform: translateX($i*$item-size-width*1.2) scale(1.3);
-  //           &:hover {
-  //             transform: translateX($i*$item-size-width*1.2) scale(1.2);
-  //           }
-  //         }
-  //         &:hover {
-  //           transform: translateX($i*$item-size-width*1.2) scale(1.2);
-  //         }
-  //       }
   
-  //       $rot: $rot + $angle;
-  //     }
-  //   }
-  // }
-  @else {
-    position: relative;
-    width:  $circle-size;
-    height: $circle-size;
-    border-radius: 50%;
-    padding: 0; 
-    list-style: none;
-    
-    > * {
-      display: block;
-      position: absolute;
-      top:  50%; 
-      left: 50%;
-      margin: -($item-size-width / 2);
-      width:  $item-size-width;
-      height: $item-size-height;
-    
-      $angle: (360 / $item-count);
-      $rot: 0;
-  
-      @for $i from 1 through $item-count {
-        &:nth-of-type(#{$i}) {
-          transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg);
-          &.screen_ball_selected {
-            transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.1);
-            &:hover {
-              transform: rotate($rot * 1deg) translate($circle-size / 1.9) rotate(89deg) scale(1.2);
-            }
-          }
-          &:hover {
-            transform: rotate($rot * 1deg) translate($circle-size / 2) rotate(89deg) scale(1.2);
-          }
-        }
-  
-        $rot: $rot + $angle;
-      }
-    }
-  } 
 }
 
-.circle-container {
-  @include on-circle($item-count: 27, $circle-size: 60em, $item-size-width: 5em, $item-size-height: 7em, $circle: true); 
+.screen-circle-container {
+  @include on-circle($item-count: 27, $circle-size: 60em, $item-size-width: 5em, $item-size-height: 7em); 
   margin: 5em auto 0;
   // border: solid 5px tomato;
+
+  .screen_ball_container {
+    display:inline-flex;
+    transition: all 0.1s linear;
+    // border:1px solid $defaultColor;
+    border-radius: 10%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 10px rgba(150, 150, 150, 0.5)  ; 
+    // padding: 0.1em;
+  }
+
   img { 
     display: block; 
     max-width: 100%; 
@@ -134,16 +73,23 @@ $defaultColor: rgba(255, 255, 255, 1);
   }
 }
 
-.screen_ball_container {
-  display:inline-flex;
-  transition: all 0.1s linear;
-  // border:1px solid $defaultColor;
-  border-radius: 10%;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 1px 1px 10px rgba(150, 150, 150, 0.5)  ; 
-  // padding: 0.1em;
+.screen-list-container {
+  display: flex;
+  overflow-x: auto;
+  .screen_ball_container {
+    display:inline-flex;
+    transition: all 0.1s linear;
+    // border:1px solid $defaultColor;
+    border-radius: 10%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 10px rgba(150, 150, 150, 0.5)  ; 
+    width: 4.5em;
+    height: 6em;
+    margin-right: 1em;
+    // padding: 0.1em;
+  }
 }
 
 .screen_ball_selected:active {
@@ -159,19 +105,19 @@ $defaultColor: rgba(255, 255, 255, 1);
 }
 
 @media screen and (max-width: 1650px) {
-  .circle-container {
+  .screen-circle-container {
     // transform: rotate(0);
     // overflow: scroll;
-    @include on-circle($item-count: 27, $circle-size: 50em, $item-size-width: 5em, $item-size-height: 7em, $circle: false); 
+    @include on-circle($item-count: 27, $circle-size: 50em, $item-size-width: 5em, $item-size-height: 7em); 
     // margin: 5em auto;
   }
 }
 
-@media screen and (max-width: 1350px) {
-  .circle-container {
+@media screen and (max-width: 1400px) {
+  .screen-circle-container {
     // transform: rotate(0);
     // overflow: scroll;
-    @include on-circle($item-count: 27, $circle-size: 40em, $item-size-width: 4em, $item-size-height: 6em, $circle: false); 
+    @include on-circle($item-count: 27, $circle-size: 40em, $item-size-width: 4em, $item-size-height: 6em); 
     // margin: 5em auto;
   }
 }

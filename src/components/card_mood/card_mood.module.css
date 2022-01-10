@@ -123,3 +123,13 @@
 .delete:hover {
   color: defaultRed;
 }
+
+@media screen and (max-width: 1550px) {
+  .mood_card {
+    min-width: 14em;
+  }
+  .mood_screen {
+    width: 3.5em;
+    height: 3.5em;
+  }
+}

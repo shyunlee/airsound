@@ -1,5 +1,5 @@
 @value defaultColor, dropShadowFilter, lightBlack, containerBack, containerBoxShadow, buttonBackground, barColor from '../../common/colors.css';
-@value laptopMediumMax from '../../common/size.css';
+@value largeWidth from '../../common/size.css';
 .mood_list_container {
   height: 100%;
   width: 100%;
@@ -79,9 +79,12 @@
   border-radius: 5em;
 }
 
-@media screen and (max-width: laptopMediumMax) {
+@media screen and (max-width: largeWidth) {
   .mood_list_toggle.closed {
     /* transform: translateX(-850%) */
     transform: translateX(-15em)
+  }
+  .mood_list {
+    padding: 0 0.5em;
   }
 }
