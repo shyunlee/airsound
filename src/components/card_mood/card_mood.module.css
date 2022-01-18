@@ -9,7 +9,7 @@
   background-color: cardBackground;
   box-shadow: cardBoxShadow;
   width: 100%;
-  min-width: 15em;
+  /* min-width: 15em; */
 }
 
 .mood_card:hover {
@@ -126,7 +126,7 @@
 
 @media screen and (max-width: 1550px) {
   .mood_card {
-    min-width: 14em;
+    /* min-width: 14em; */
   }
   .mood_screen {
     width: 3.5em;

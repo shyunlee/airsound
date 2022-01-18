@@ -14,8 +14,12 @@
 .video_frame {
   position: absolute;
   z-index: -1;
-  width: 100%;
-  min-width: 120em;
+  width: auto;
+  height:auto;
+  overflow:hidden;
+  min-width: 100%;
+  min-height: 100%;
+  /* min-width: 120em; */
 }
 
 .player_control {
@@ -30,6 +34,7 @@
   display:flex;
   align-items: center;
   overflow: hidden;
+  /* min-height: 670px; */
 }
 
 .main_left {
@@ -40,7 +45,7 @@
   width: 100%;
   /* flex:0 0 23em; */
   flex:0 0 20%;
-  max-width: 23em;
+  max-width: 22em;
   min-width: 18em;
   min-height: 40em;
   padding-top:3em;
@@ -52,7 +57,7 @@
 
 .main_center {
   height: 100%;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
 }
 
 .main_right {
@@ -87,7 +92,7 @@
 
 .center_bottom {
   height: 30%;
-  width: 60em;
+  width: 95%;
   /* padding-top: 5em; */
   /* margin-bottom: 1em; */
 }
@@ -175,9 +180,6 @@
 }
 
 @media screen and (max-width: largeWidth) {
-  .center_bottom {
-    width: 50em;
-  }
   .sounds_circle {
     padding-left: 12em;
     transform: translateY(-1em);
@@ -190,12 +192,11 @@
 
 @media screen and (max-width: mediumWidth) {
   .center_bottom {
-    width: 45em;
     height: 30%;
   }
   .sounds_circle {
     padding-left: 9em;
-    transform: translateY(2em);
+    /* transform: translateY(2em); */
   }
   .toggle_locking_sounds {
     left:1.5em;
@@ -210,7 +211,7 @@
 
 @media screen and (max-width: smallWidth) {
   .center_bottom {
-    width: 35em;
+    width: 30em;
     height: 30%;
     overflow:auto;
     display: flex;
@@ -218,9 +219,13 @@
     padding-bottom: 1em;
     margin-bottom: 2em;
   }
+  .main_left {
+    flex: 0 0 25%;
+  }
   .main_right {
     margin-top: 3em;
-    flex: 0 1 5em;
+    /* flex: 0 1 5em; */
+    flex: 0 1 25%;
     overflow: auto;
     padding: 0;
     display: flex;
@@ -232,9 +237,7 @@
     padding: 0;
     width: 5em;
   }
-  .toggle_locking_sounds {
-    left:1.5em;
-  }
+
 }
 
 @media screen and (max-width: largeTabWidth) {

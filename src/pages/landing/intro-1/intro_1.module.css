@@ -6,9 +6,17 @@
   background: no-repeat center center/cover;
 }
 
-.intro_video {
+/* .intro_video {
   width: 100vw;
   min-width: 1250px;
+  z-index: 1;
+} */
+
+.intro_video {
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
   z-index: 1;
 }
 

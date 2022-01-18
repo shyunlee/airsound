@@ -21,7 +21,7 @@
 }
 
 .mood_list.closed {
-  transform: translateX(-100%)
+  transform: translateX(-105%)
 }
 
 .mood_list_bar {
@@ -36,15 +36,15 @@
 
 .mood_list_toggle {
   display: flex;
-  margin-left:0.2em;
+  margin-left:0.3em;
   align-items: center;
   transition: transform 0.5s linear;
   filter: dropShadowFilter;
 }
 
 .mood_list_toggle.closed {
-  /* transform: translateX(-850%) */
-  transform: translateX(-20em)
+  transform: translateX(-18em);
+  /* transform: translateX(-19em) */
 }
 
 .toggle_btn {
@@ -81,8 +81,9 @@
 
 @media screen and (max-width: largeWidth) {
   .mood_list_toggle.closed {
+    transform: translateX(calc(100% - 18em));
     /* transform: translateX(-850%) */
-    transform: translateX(-15em)
+    /* transform: translateX(-17vw) */
   }
   .mood_list {
     padding: 0 0.5em;

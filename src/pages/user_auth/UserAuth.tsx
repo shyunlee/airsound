@@ -144,7 +144,7 @@ const UserAuth = ({onLogin, onSignup, isLogin, onAuthLogin}: UserAuthProps): JSX
           </form>
           <div className={styles.auth_container}>
             <div className={styles.login_text}>Already have an account?</div>
-            <div className={styles.login_link} onClick={toggle}>Bck to login</div>
+            <div className={styles.login_link} onClick={toggle}>Back to login</div>
             <AuthLogin authLogin={authLogin}/>
           </div>
         </div>

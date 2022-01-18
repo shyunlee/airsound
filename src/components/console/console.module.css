@@ -1,8 +1,10 @@
 @value defaultColor, dropShadowFilter, containerBack, containerBoxShadow, lightBlack, buttonBackground, defaultRed, barColor, defaultPink, defaultRed from '../../common/colors.css';
+@value mediumHeight from '../../common/size.css';
 
 .console_container {
   height: 100%;
   width: 100%;
+  min-height: 25em;
   overflow: hidden;
   padding: 0.2em 0.2em;
   padding-bottom: 0;
@@ -32,7 +34,8 @@
 }
 
 .console.closed {
-  transform:translateY(-27em);
+  /* transform:translateY(-27em); */
+  transform:translateY(-110%);
 }
 
 .console_controller {
@@ -188,7 +191,7 @@
 }
 
 .console_toggle.closed {
-  transform: translateY(-26em)
+  transform: translateY(calc(-44vh));
 }
 
 .console_bar {
@@ -216,4 +219,10 @@
 
 .toggle_btn.closed:hover {
   transform: rotate(-180deg) scale(1.3)
+}
+
+@media screen  and (max-height: mediumHeight) {
+  .console_toggle.closed {
+    transform: translateY(calc(-22em));
+  }
 }

@@ -7,8 +7,9 @@
 @value largeHeight: 930px;
 
 @value mediumWidth: 1400px;
-@value mediumHeight: 750px;
+@value mediumHeight: 800px;
 
-@value smallWidth: 1250px;
+@value smallWidth: 1249px;
 
-@value largeTabWidth: 1015px;
+@value largeTabWidth: 950px;
+@value largeTabHeight: 725px;
