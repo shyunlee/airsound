@@ -1,22 +1,16 @@
+@value smallWidth from '../../../common/size.css';
+
 .intro_container {
   width: 100%;
-  height: 100vh;
+  height: auto;
   overflow: hidden;
   position: relative;
   background: no-repeat center center/cover;
 }
 
-/* .intro_video {
-  width: 100vw;
-  min-width: 1250px;
-  z-index: 1;
-} */
-
 .intro_video {
-  width: auto;
-  height: auto;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
@@ -33,7 +27,8 @@
 }
 
 .intro_logo {
-  width: 8em;
+  width: 7.5vw;
+  color: #fff;
 }
 
 .intro_contents {
@@ -45,31 +40,27 @@
   z-index:3;
   display: flex;
   flex-direction: column;
-  padding:3em 5em;
-}
-
-.intro_logo {
-  color: #fff;
+  padding:5vh 3vw;
 }
 
 .intro_main {
   color: #fff;
-  margin-top: 16em;
+  margin-top: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 45em;
+  /* min-width: 45em; */
 }
 
 .intro_center h3 {
-  font-size: 2.5rem;
+  font-size: 2.5vw;
   margin:0;
   margin-bottom: 0.2em;
   white-space: nowrap;
 }
 
 .intro_center h2 {
-  font-size: 3rem;
+  font-size: 3vw;
   margin:0;
   margin-bottom: 1em;
   white-space: nowrap;
@@ -85,10 +76,46 @@
   color: #fff;
   background: none;
   border: 2px solid #fff;
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   font-weight: bold;
   letter-spacing: 0.2em;
   border-radius: 10em;
   padding: 0.2em 1em;
   cursor: pointer;
+}
+
+@media screen and (max-width: smallWidth) {
+  .intro_logo {
+    width: 10vw;
+  }
+
+  .intro_main {
+    margin-top: 10vw;
+  }
+
+  .intro_contents {
+    padding-top: 3vh;
+  }
+
+  .intro_center h3 {
+    font-size: 3vw;
+    margin:0;
+    margin-bottom: 0.2em;
+    white-space: nowrap;
+  }
+  
+  .intro_center h2 {
+    font-size: 3.5vw;
+    margin:0;
+    margin-bottom: 1em;
+    white-space: nowrap;
+  }
+
+  .intro_buttons button {
+    font-size: 1.8vw;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    border-radius: 10em;
+    padding: 0.3em 1em;
+  }
 }

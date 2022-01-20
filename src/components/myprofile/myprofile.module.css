@@ -1,9 +1,11 @@
 @value defaultColor, defaultRed, lightBlack, pointColor from '../../common/colors.css';
+@value mediumHeight, smallWidth from '../../common/size.css';
+
 
 .myprofile_modal {
   position: absolute;
   background-color: defaultColor;
-  width: 27em;
+  width: 25em;
   height: 40em;
   top:0;
   bottom: 0;
@@ -147,4 +149,56 @@
   font-size: 1rem;
   cursor: pointer;
   white-space: nowrap;
+}
+
+@media screen and (max-width: smallWidth) {
+  .myprofile_modal {
+    width: 23em;
+  }
+}
+
+@media screen and (max-height: mediumHeight) {
+  .myprofile_modal {
+    height: 33em;
+  }
+
+  .modal_header {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+  
+  .modal_header span {
+    font-size: 1.2rem;
+    margin-top: 0.3em;
+  }
+  
+  .avatar_image {
+    width: 7.5em;
+    height: 7.5em;
+    border-radius: 50%;
+  }
+  
+  .label {
+    margin:0em 0em;
+  }
+  
+  .input {
+    font-size: 1rem;
+  }
+  
+  .label::after {
+    margin-bottom:0.5em;
+  }
+  
+  .empty_space {
+    height: 5em;
+  }
+  
+  .alert {
+    font-size: 0.8rem;
+  }
+  
+  .submit_button {
+    font-size: 0.9rem;
+  }
 }
